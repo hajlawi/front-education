@@ -1,0 +1,61 @@
+<app-nav-header></app-nav-header>
+
+  <!-- ***** Header Area Start ***** -->
+  <header class="header-area header-sticky ">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <nav class="main-nav">
+                    <!-- ***** Logo Start ***** -->
+                    <a href="index.html" class="logo">
+                        Edu Meeting
+                    </a>
+                    <!-- ***** Logo End ***** -->
+                    <!-- ***** Menu Start ***** -->
+                    <ul class="nav">
+                        <li class="scroll-to-section"><a routerLink="/welcome" routerLinkActive="active" class="active">Home</a></li>
+                        <li><a href="meetings.html">Meetings</a></li>
+                        <li class="scroll-to-section"><a href="#apply">Apply Now</a></li>
+                        <li class="has-sub">
+                            <a href="javascript:void(0)">Pages</a>
+                            <ul class="sub-menu">
+                                <li><a href="meetings.html">Upcoming Meetings</a></li>
+                                <li><a href="meeting-details.html">Meeting Details</a></li>
+                            </ul>
+                        </li>
+                        <li class="scroll-to-section"><a href="#courses">Courses</a></li> 
+                        <li class="scroll-to-section"><a href="#contact">Contact Us</a></li>
+                        <li class="scroll-to-section"><a routerLink="/login" routerLinkActive="active" *ngIf="!loginService.isUserLoggedIn()" >Se Connecter</a></li>
+                   
+                       <!--          <div class="grid">
+                                    <div class="col-12 md:col-4">
+                                        <a routerLink="/profil" routerLinkActive="active" *ngIf="loginService.isUserLoggedIn()" >
+                                            <p-avatar   image="../../../../assets/images/sema.jpg" styleClass="mr-4" size="xlarge" shape="circle">
+                                        </p-avatar></a>
+                                            
+                                    </div>
+                                 </div>  -->
+
+                        <li class="has-sub" *ngIf="loginService.isUserLoggedIn()">
+                            <a href="javascript:void(0)" routerLink="/login" routerLinkActive="active"   >Mon espace</a>
+                            <ul class="sub-menu">
+                                <li><a  routerLink="/profil"   routerLinkActive="active">Mon Compte </a></li>
+                                <li><a  routerLink="/se-deconnecter"   routerLinkActive="active">Se Deconnecter</a></li>
+                   
+                            </ul>
+                        </li>
+                     <li>
+                 
+
+                     </li>  
+                    </ul>        
+                    <a class='menu-trigger'>
+                        <span>Menu</span>
+                    </a>
+                    <!-- ***** Menu End ***** -->
+                </nav>
+            </div>
+        </div>
+    </div>
+
+</header>

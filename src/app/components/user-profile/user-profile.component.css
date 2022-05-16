@@ -1,0 +1,63 @@
+.row{
+    margin-bottom: 25px;
+}
+.home_background{
+    background-image: url("../../../assets/images/sema.jpg");
+}
+.profilePic{
+    width: 230px;
+    height: 206px;
+    margin-bottom: -25px;  
+}
+.spanStyle{
+    display: block;
+    /* width: 100%; */
+    padding: .375rem .75rem;
+    font-size: 28px;
+    line-height: 1.5;
+    color: #ffffff;
+
+}
+.home_content{
+    z-index: 1;
+}
+.spanLabel{
+    color: white;
+    font-size: 27px;
+}
+.spanFlex{
+    display: flex;
+    flex-direction: row;
+    
+}
+.form-control {
+    color: white;
+    font-size: 20px;
+}
+input[type=text]:focus{
+    color: black;
+    font-size: 20px;
+}
+
+.formTitle{
+    font-size: 30px;
+    color:#31124b;
+}
+.UpdateProfilePic{
+    width: 230px;
+    height: 206px; 
+    border-radius: 50%;
+}
+
+.formLength{
+    height: 400px;
+    width: 483px;
+    background-color: white;
+}
+.contact_form_section {
+  padding-top: 0; 
+    margin-top: -133px;
+}
+.userPic{
+    border-radius: 100px
+  }

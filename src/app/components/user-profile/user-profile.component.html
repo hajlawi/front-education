@@ -1,0 +1,178 @@
+<!-- 
+
+<div class="super_container">
+	
+	<div class="home">
+		<div class="home_background parallax-window" data-parallax="scroll" ></div>
+		<div class="home_content">
+			<img *ngIf="currentUser.images==null"src="../../../../assets/images/profilePic.png" title="Change picture" (click)="openModal(UpdatePic)"class="profilePic">		
+			<img *ngIf="currentUser.images!=null"[src]="currentUser.images" (click)="openModal(UpdatePic)"title="Change picture" class="profilePic userPic">		
+
+		</div>
+	</div>
+
+
+
+	<div class="contact_form_section" *ngIf="update==false">
+		<div class="container">
+			<div class="row">
+				<div class="col">
+
+					<div class="contact_form_container"*ngIf="exist==true">
+						<div class="contact_title text-center">Personnal infos</div>
+						<form form class="contact_form text-center">
+							<div class="spanFlex">
+								<span class="spanLabel">Last name :</span>
+								<span class=" spanStyle" style="margin-left: 143px;">{{currentUser.nom}}</span>
+							</div>
+							<div class="spanFlex">
+								<span class="spanLabel">First name :</span>
+								<span class="  spanStyle"style="margin-left: 135px;">{{currentUser.prenom}}</span>
+							</div>
+							<div class="spanFlex">
+								<span class="spanLabel">Email :</span>
+								<span class=" spanStyle"style="margin-left: 200px;">{{currentUser.email}}</span>
+							</div>
+							<div class="spanFlex">
+								<span class="spanLabel">Phone : </span>
+								<span class="  spanStyle"style="margin-left: 189px;">{{currentUser.numTel}}</span>
+							</div>
+							
+
+							<button (click)="showUpdateForm()" id="form_submit_button" class="form_submit_button button trans_200">Edit<span></span><span></span><span></span></button>
+						</form>
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+<div class="contact_form_section" *ngIf="update==true">
+	<div class="container">
+		<div class="row">
+			<div class="col">
+
+				<div class="contact_form_container">
+					<div class="contact_title text-center">Update your infos</div>
+					<form form [formGroup]="profileFormUser" (ngSubmit)="editProfileUser()" class="contact_form text-center">
+						<input formControlName="nomProfile" type="text" class="contact_form_name  inputStyle form-control input_field" placeholder="Last Name"
+			   [ngClass]="{ 'is-invalid': submittedUpdate && profileUserControls['nomProfile'].errors }" ngDefaultControl/>
+		<div *ngIf="submittedUpdate && profileUserControls['nomProfile'].errors" class="invalid-feedback">
+		  <div class="alert alert-danger"*ngIf="profileUserControls['nomProfile'].errors['required']"> last name required</div>
+		</div>
+		<input type="text" class="contact_form_name input_field inputStyle form-control" formControlName="prenomProfile" placeholder="First Name"
+		[ngClass]="{ 'is-invalid': submittedUpdate && profileUserControls['prenomProfile'].errors }" />
+ <div *ngIf="submittedUpdate && profileUserControls['prenomProfile'].errors" class="invalid-feedback">
+   <div class="alert alert-danger" *ngIf="profileUserControls['prenomProfile'].errors['required']">first name required</div>
+ </div>
+ <input type="text" class="contact_form_name input_field inputStyle form-control" formControlName="emailProfile" placeholder="Email"
+ [ngClass]="{ 'is-invalid': submittedUpdate && profileUserControls['emailProfile'].errors }"  />
+<div *ngIf="submittedUpdate && profileUserControls['emailProfile'].errors" class="invalid-feedback">
+<div class="alert alert-danger" *ngIf="profileUserControls['emailProfile'].errors['required']">Email required</div>
+</div>
+<div class="alert alert-danger invalid-feedback"
+  *ngIf="profileFormUser.controls['emailProfile'].errors && profileFormUser.controls['emailProfile'].errors['email']">email must be valid
+</div>
+<input type="text" class="contact_form_name input_field inputStyle form-control" formControlName="phoneProfile" placeholder="Phone number"
+[ngClass]="{ 'is-invalid': submittedUpdate && profileUserControls['phoneProfile'].errors }" />
+<div class="alert alert-danger invalid-feedback" *ngIf="
+profileUserControls['phoneProfile'].errors &&
+profileUserControls['phoneProfile'].errors['pattern']">  phone number must contain only digits
+</div>
+<div class="alert alert-danger invalid-feedback" *ngIf="profileFormUser.controls['phoneProfile'].touched && profileFormUser.controls['phoneProfile'].errors">
+phone number must contain at least 8 caracters
+</div>
+<div class="invalid-feedback" *ngIf="submittedUpdate && profileUserControls['phoneProfile'].errors">
+<div class="alert alert-danger" *ngIf="profileUserControls['phoneProfile'].errors['required']">
+phone number required
+</div>
+</div>
+						<button type="submit" id="form_submit_button" class="form_submit_button button trans_200">finish</button>
+					</form>
+				</div>
+
+			</div>
+		</div>
+	</div>
+</div>
+
+</div>
+
+<ng-template #UpdatePic>
+	<div class="modal-body text-center">
+	  <p class="formTitle">Update profile picture</p>
+	  <form class="formLength"name="updateUserPic">
+		<input type="file" class="form-control"(change)="onSelectFile($event)" accept="image/*" />
+		
+			<div  *ngIf="url!=null">
+			  <img class=" UpdateProfilePic" [src]="url">
+			  
+			</div>
+		
+		
+		<button type="button" *ngIf="currentUser.images==null" (click)="uploadImage()" class="form_submit_button button">Add</button>
+		<button type="button" *ngIf="currentUser.images!=null"(click)="updateImage()" class="form_submit_button button">Update</button>
+		<button type="button" class="form_submit_button button" style="margin-left: 15px;"(click)="resetAddForm()">Cancel</button>
+  
+	  </form>
+	</div>
+  </ng-template>
+
+ -->
+
+<!--Navbar-->
+<mdb-navbar SideClass="navbar navbar-expand-lg navbar-dark indigo">
+
+	<mdb-navbar-brand>
+	  <a class="navbar-brand" href="#">
+		<img src="https://mdbootstrap.com/img/logo/mdb-transparent.webp" height="30" class="d-inline-block align-top" alt="">
+	  </a>
+	</mdb-navbar-brand>
+  
+	<mdb-icon fas icon="angle-left" size="lg" class="text-white mr-auto d-flex d-md-none align-self-center"></mdb-icon>
+  
+	<!-- Collapsible content -->
+	<links>
+  
+	  <!-- Links -->
+	  <ul class="navbar-nav mr-auto">
+		<li class="nav-item active">
+		  <a class="nav-link waves-light" mdbWavesEffect>Home<span class="sr-only">(current)</span></a>
+		</li>
+		<li class="nav-item">
+		  <a class="nav-link waves-light" mdbWavesEffect>Features</a>
+		</li>
+		<li class="nav-item">
+		  <a class="nav-link waves-light" mdbWavesEffect>Pricing</a>
+		</li>
+  
+		<!-- Dropdown -->
+		<li class="nav-item dropdown" dropdown>
+		  <a dropdownToggle mdbWavesEffect type="button" class="nav-link dropdown-toggle waves-light" mdbWavesEffect>
+			Basic dropdown<span class="caret"></span></a>
+		  <div *dropdownMenu class="dropdown-menu dropdown dropdown-primary" role="menu">
+			<a class="dropdown-item waves-light" mdbWavesEffect href="#">Action</a>
+			<a class="dropdown-item waves-light" mdbWavesEffect href="#">Another action</a>
+			<a class="dropdown-item waves-light" mdbWavesEffect href="#">Something else here</a>
+			<div class="divider dropdown-divider"></div>
+			<a class="dropdown-item waves-light" mdbWavesEffect href="#">Separated link</a>
+		  </div>
+		</li>
+  
+	  </ul>
+	  <!-- Links -->
+  
+	  <!-- Search form -->
+	  <form class="form-inline waves-light" mdbWavesEffect>
+		<div class="md-form my-0">
+		  <input class="form-control mr-sm-2" type="text" placeholder="Search">
+		</div>
+	  </form>
+	</links>
+	<!-- Collapsible content -->
+  
+  
+  </mdb-navbar>
+  <!--/.Navbar-->
