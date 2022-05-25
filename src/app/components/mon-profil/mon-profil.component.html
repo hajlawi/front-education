@@ -1,0 +1,229 @@
+<div class="container-xl px-4 mt-4">
+
+    <hr class="mt-0 mb-4">
+    <div class="row">
+        <div class="col-xl-4">
+            <!-- Profile picture card-->
+            <div class="photo">
+                <div class="card mb-4 mb-xl-0">
+                    <div class="card-header">Profile Picture</div>
+                    <div class="card-body text-center">
+                        <!-- Profile picture image-->
+                        <img class="img-account-profile rounded-circle mb-2" *ngIf="dbImage==null"
+                            src="../../assets/images/profil.jpg" title="Change picture" (click)="openModal(UpdatePic)">
+                        <img class="img-account-profile rounded-circle mb-2" *ngIf="dbImage!=null" [src]="dbImage"
+                            title="Change picture">
+                        <!-- Profile picture upload button-->
+                        <button class="button"  (click)="openModal(UpdatePic)" type="button">Upload new image</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="col-xl-8" *ngIf="update==false">
+            <!-- Account details card-->
+            <div class="card mb-4" *ngIf="exist==true">
+                <div class="card-header">Account Details</div>
+                <div class="card-body">
+                    <form>
+                        <!-- Form Group (username)-->
+                        <!--   <div class="mb-3">
+                            <label class="small mb-1" for="inputUsername">Nom</label>
+                            <input class="form-control" id="inputUsername" type="text" placeholder="Enter your username" value={{currentUser.nom}}>
+                        </div> -->
+                        <div class="row gx-3 mb-3">
+                            <!-- Form Group (first name)-->
+                            <div class="col-md-6">
+
+                                <label class="small mb-1" for="inputUsername">Nom</label>
+                                <span class="form-control" id="inputUsername" type="text"
+                                    placeholder="Enter your username">{{currentUser.nom}}</span>
+                            </div>
+                            <!-- Form Group (last name)-->
+                            <div class="col-md-6">
+                                <label class="small mb-1" for="inputFirstName">Prenom</label>
+                                <span class="form-control" id="inputFirstName" type="text"
+                                    placeholder="Enter your first name">{{currentUser.prenom}}</span>
+                            </div>
+                        </div>
+                        <!-- Form Row-->
+                        <div class="row gx-3 mb-3">
+                            <div class="col-md-6">
+                                <label class="small mb-1" for="inputOrgName">Numéro de mobile</label>
+                                <span class="form-control" id="inputOrgName" type="text"
+                                    placeholder="Enter your organization name">{{currentUser.numTel}}</span>
+                            </div>
+                            <!-- Form Group (last name)-->
+                            <div class="col-md-6">
+                                <label class="small mb-1" for="inputLastName">Email</label>
+                                <span class="form-control" id="inputLastName" type="text"
+                                    placeholder="Enter your last name">{{currentUser.email}}</span>
+                            </div>
+                        </div>
+                        <!-- Form Row        -->
+                        <div class="row gx-3 mb-3">
+                            <!-- Form Group (organization name)-->
+
+                            <!-- Form Group (location)-->
+                            <div class="col-md-6">
+                                <label class="small mb-1" for="inputLocation">Biographie</label>
+                                <span class="form-control" id="inputLocation" type="text"
+                                    placeholder="Enter your location">{{currentUser['enseignant']['biography']}}</span>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="small mb-1" for="inputPhone">Spécialite</label>
+                                <span class="form-control" id="inputPhone" type="tel"
+                                    placeholder="Enter your phone number">{{currentUser['enseignant']['specialite']}}</span>
+                            </div>
+                        </div>
+
+                        <!-- Save changes button-->
+
+
+                        <button class="button" type="button" (click)="showBasicDialog()"><i
+                                class="fa fa-pencil-square-o fa-2x" aria-hidden="true"></i>Modifier</button>
+                      
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <p-dialog header="Header" [(visible)]="displayBasic" [style]="{width: '60vw'}" >
+
+            <!-- Account details card-->
+            <div class="card mb-4">
+                <div class="card-header">Account Details</div>
+                <div class="card-body">
+                    <form form [formGroup]="profileFormUser" (ngSubmit)="editProfileUser()"
+                        class="contact_form text-center">
+                        <!-- Form Group (username)-->
+                        <!--   <div class="mb-3">
+                                <label class="small mb-1" for="inputUsername">Nom</label>
+                                <input class="form-control" id="inputUsername" type="text" placeholder="Enter your username" value={{currentUser.nom}}>
+                            </div> -->
+                        <div class="row gx-3 mb-3">
+                            <!-- Form Group (first name)-->
+                            <div class="col-md-6">
+
+                                <label class="small mb-1" for="inputUsername">Nom</label>
+                                <input class="contact_form_name  inputStyle form-control input_field"
+                                    id="inputUsername" type="text" formControlName="nomProfile"
+                                    [ngClass]="{ 'is-invalid': submittedUpdate && profileUserControls['nomProfile'].errors }"
+                                    ngDefaultControl />
+                                <div *ngIf="submittedUpdate && profileUserControls['nomProfile'].errors"
+                                    class="invalid-feedback">
+                                    <div class="alert alert-danger"
+                                        *ngIf="profileUserControls['nomProfile'].errors['required']">
+                                        last name required</div>
+                                </div>
+                            </div>
+                            <!-- Form Group (last name)-->
+                            <div class="col-md-6">
+                                <label class="small mb-1" for="inputFirstName">Prenom</label>
+                                <input class="form-control" id="inputFirstName" type="text"
+                                    formControlName="prenomProfile" placeholder="First Name"
+                                    [ngClass]="{ 'is-invalid': submittedUpdate && profileUserControls ['prenomProfile'].errors }" />
+                                <div *ngIf="submittedUpdate && profileUserControls ['prenomProfile'].errors"
+                                    class="invalid-feedback">
+                                    <div class="alert alert-danger"
+                                        *ngIf="profileUserControls ['prenomProfile'].errors['required']">
+                                        first name required</div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Form Row-->
+                        <div class="row gx-3 mb-3">
+                            <div class="col-md-6">
+                                <label class="small mb-1" for="inputOrgName">Numéro de mobile</label>
+                                <input class="form-control" id="inputOrgName" type="text"
+                                    formControlName="phoneProfile" placeholder="Phone number"
+                                    [ngClass]="{ 'is-invalid': submittedUpdate && profileUserControls['phoneProfile'].errors }" />
+                                <div class="alert alert-danger invalid-feedback" *ngIf="profileUserControls['phoneProfile'].errors &&
+                                 profileUserControls['phoneProfile'].errors['pattern']"> phone number must contain only digits
+                                </div>
+                                <div class="alert alert-danger invalid-feedback" *ngIf="profileFormUser.controls['phoneProfile'].touched && profileFormUser.controls['phoneProfile'].errors">
+                                    phone number must contain at least 8 caracters
+                                    </div>
+                            </div>
+                            <!-- Form Group (last name)-->
+                            <div class="col-md-6">
+                                <label class="small mb-1" for="inputLastName">Email</label>
+                                <input class="form-control" id="inputLastName" type="text"
+                                formControlName="emailProfile" placeholder="Email"
+                                [ngClass]="{ 'is-invalid': submittedUpdate && profileUserControls['emailProfile'].errors }" />
+                                <div *ngIf="submittedUpdate && profileUserControls['emailProfile'].errors" class="invalid-feedback">
+                                    <div class="alert alert-danger" *ngIf="profileUserControls['emailProfile'].errors['required']">Email required</div>
+                                    </div>
+                                    <div class="alert alert-danger invalid-feedback"
+                                      *ngIf="profileFormUser.controls['emailProfile'].errors && profileFormUser.controls['emailProfile'].errors['required']">email must be valid
+                                    </div>
+                            </div>
+                        </div>
+                        <!-- Form Row        -->
+                        <div class="row gx-3 mb-3">
+                            <!-- Form Group (organization name)-->
+
+                            <!-- Form Group (location)-->
+                            <div class="col-md-6">
+                                <label class="small mb-1" for="inputLocation">Biographie</label>
+                                <input class="form-control" id="inputBiography" type="text"
+                                formControlName="biography" placeholder="Biography"
+                                [ngClass]="{ 'is-invalid': submittedUpdate && profileUserControls['biography'].errors }" />
+                       <!--          <div *ngIf="submittedUpdate && profileUserControls ['biography'].errors"
+                                    class="invalid-feedback">
+                                    <div class="alert alert-danger"
+                                        *ngIf="profileUserControls ['biography'].errors['required']">
+                                        Biography name required</div>
+                                </div> -->
+                            </div>
+                            <div class="col-md-6">
+                                <label class="small mb-1" for="inputLocation">Spécialite</label>
+                                <input class="form-control" id="inputBiography" type="text"
+                                formControlName="specialite" placeholder="specialite"
+                                [ngClass]="{ 'is-invalid': submittedUpdate && profileUserControls['specialite'].errors }" />
+                        <!--         <div *ngIf="submittedUpdate && profileUserControls ['specialite'].errors"
+                                class="invalid-feedback">
+                                <div class="alert alert-danger"
+                                    *ngIf="profileUserControls ['specialite'].errors['required']">
+                                    specialite name required</div>
+                            </div> -->
+                            </div>
+                        </div>
+                        
+                        <!-- Save changes button-->
+                        <button class="btn btn-success"  type="submit"  (click)="showBasicDialog()">Save changes</button>
+                        <button  class="btn btn-danger" (click)="displayBasic=false" 
+                            styleClass="p-button-text" style="margin-left: 15px;" >Fermer</button>
+                    </form>
+                </div>
+            </div>
+        </p-dialog>
+    </div>
+
+
+
+</div>
+
+
+<ng-template #UpdatePic>
+    <div class="modal-body text-center">
+        <p class="formTitle">Update profile picture</p>
+        <form class="formLength" name="updateUserPic">
+            <input type="file" class="form-control" (change)="onImageUpload($event)" accept="image/*" />
+
+            <div *ngIf="url!=null">
+                <img class=" UpdateProfilePic" [src]="url">
+
+            </div>
+
+
+            <button type="button" *ngIf="dbImage==null" (click)="imageUploadAction()"
+                class="form_submit_button button">Add</button>
+            <button type="button" *ngIf="dbImage!=null" (click)="imageUploadAction()"
+            class="btn btn-success">Update</button>
+            <button type="button" class="btn btn-danger" style="margin-left: 15px;"
+                (click)="resetAddForm()">Cancel</button>
+
+        </form>
+    </div>
+</ng-template>

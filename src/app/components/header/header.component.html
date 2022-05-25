@@ -15,7 +15,6 @@
                     <ul class="nav">
                         <li class="scroll-to-section"><a routerLink="/welcome" routerLinkActive="active" class="active">Home</a></li>
                         <li><a href="meetings.html">Meetings</a></li>
-                        <li class="scroll-to-section"><a href="#apply">Apply Now</a></li>
                         <li class="has-sub">
                             <a href="javascript:void(0)">Pages</a>
                             <ul class="sub-menu">
@@ -23,7 +22,7 @@
                                 <li><a href="meeting-details.html">Meeting Details</a></li>
                             </ul>
                         </li>
-                        <li class="scroll-to-section"><a href="#courses">Courses</a></li> 
+                        <li class="scroll-to-section"><a routerLink="/formation" routerLinkActive="active" >Formation</a></li> 
                         <li class="scroll-to-section"><a href="#contact">Contact Us</a></li>
                         <li class="scroll-to-section"><a routerLink="/login" routerLinkActive="active" *ngIf="!loginService.isUserLoggedIn()" >Se Connecter</a></li>
                    
@@ -37,9 +36,10 @@
                                  </div>  -->
 
                         <li class="has-sub" *ngIf="loginService.isUserLoggedIn()">
-                            <a href="javascript:void(0)" routerLink="/login" routerLinkActive="active"   >Mon espace</a>
+                            <a href="javascript:void(0)" routerLink="" routerLinkActive="active"   >Mon espace</a>
                             <ul class="sub-menu">
-                                <li><a  routerLink="/profil"   routerLinkActive="active">Mon Compte </a></li>
+                                <li><a    (click)="getProfil()"  routerLinkActive="active">Mon Compte </a></li>
+                                <li><a  *ngIf="role=='ROLE_ENSEIGNANT'" routerLink="/mes-formation"   routerLinkActive="active">Mes Formations  </a></li>
                                 <li><a  routerLink="/se-deconnecter"   routerLinkActive="active">Se Deconnecter</a></li>
                    
                             </ul>

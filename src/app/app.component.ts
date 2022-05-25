@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { TokenStorageService } from './service/tokenService/token-storage.service';
 
 
 @Component({
@@ -7,13 +8,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
+  role: any;
 
 
-  constructor() {
+  constructor(private tokenStorage:TokenStorageService) {
   }
 
   ngOnInit() {
-
+    this.role = this.tokenStorage.getUser().roles;
+    console.log("roleWelcome"+this.role);
   }
 
 

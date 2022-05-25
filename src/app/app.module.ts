@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule , CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
 
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
@@ -30,6 +30,14 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatTabsModule } from '@angular/material/tabs';
 import { StoreModule } from '@ngrx/store';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { MesFormationComponent } from './components/formation/mes-formation/mes-formation.component';
+import { AllFormationComponent } from './components/formation/all-formation/all-formation.component';
+import {FileUploadModule} from 'primeng/fileupload';
+import {ButtonModule} from 'primeng/button';
+import { AddFormationComponent } from './components/formation/add-formation/add-formation/add-formation.component';
+import { MonProfilComponent } from './components/mon-profil/mon-profil.component';
+import {DialogModule} from 'primeng/dialog';
 @NgModule({
   declarations: [
     AppComponent,
@@ -42,6 +50,10 @@ import { MDBBootstrapModule } from 'angular-bootstrap-md';
     RegisterComponent,
     LogoutComponent,
     UserProfileComponent,
+    MesFormationComponent,
+    AllFormationComponent,
+    AddFormationComponent,
+    MonProfilComponent,
 
   ],
   imports: [
@@ -63,12 +75,12 @@ import { MDBBootstrapModule } from 'angular-bootstrap-md';
     MatIconModule,MatCheckboxModule,
     MatTabsModule,
     StoreModule.forRoot({}, {}),
-    MDBBootstrapModule,
-
+    MDBBootstrapModule,NgbModule,FileUploadModule,ButtonModule,DialogModule
 
 
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
 })
 export class AppModule { }

@@ -5,6 +5,10 @@ import { LoginComponent } from './components/authentification/login/login.compon
 import { RegisterComponent } from './components/authentification/register/register.component';
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
 import { LogoutComponent } from './components/authentification/logout/logout.component';
+import { AllFormationComponent } from './components/formation/all-formation/all-formation.component';
+import { MesFormationComponent } from './components/formation/mes-formation/mes-formation.component';
+import { AddFormationComponent } from './components/formation/add-formation/add-formation/add-formation.component';
+import { MonProfilComponent } from './components/mon-profil/mon-profil.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'welcome', pathMatch: 'full' },
@@ -27,6 +31,21 @@ const routes: Routes = [
   {
     path:'se-deconnecter',
     component:LogoutComponent
+  },
+  {
+    path:'formation',
+    component:AllFormationComponent
+  },
+  {
+    path:'mes-formation',
+    component:MesFormationComponent
+  },{
+    path:'ajout-formation',
+    component:AddFormationComponent
+  },
+  {
+    path:'mon-profil',
+    component:MonProfilComponent
   },
 ];
 

@@ -24,7 +24,7 @@ export class LoginComponent implements OnInit {
   ) {}
   ngOnInit() {
     this.loginForm = this.formBuilder.group({
-      email: ['', Validators.required],
+      email: ['', Validators.required,Validators.email],
       password: ['', Validators.required],
     });
   }
@@ -49,24 +49,20 @@ export class LoginComponent implements OnInit {
               if (token) {
                 let BearerToken = 'Bearer ' + this.authService.currentUserValue.accessToken;
                 sessionStorage.setItem('bearerToken', BearerToken);
-               // this.authService.currentUserHotel().subscribe((data) => {})
-             /*  this.currentUser=JSON.parse(sessionStorage.getItem('currentUser') || '{}')
-              if(this.currentUser.state=="enseignant") 
-                this.router.navigate(['/enseignant']);
-                else if(this.currentUser.state=="etudiant")
-                this.router.navigate(['/etudiant']);
-                  */
-               this.router.navigate(['/welcome']);
+            
+                this.router.navigate(['/welcome']);
+
               }
             } else {
               this.error = 'Invalid Login';
             }
-          },
+          },  
           (error) => {
             this.error = error;
             this.submitted = false;
           }
-      );
+      ),()=>{},()=>{
+      };
 
     }
   }

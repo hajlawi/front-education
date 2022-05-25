@@ -1,23 +1,28 @@
-<!-- 
+
 
 <div class="super_container">
 	
 	<div class="home">
 		<div class="home_background parallax-window" data-parallax="scroll" ></div>
 		<div class="home_content">
-			<img *ngIf="currentUser.images==null"src="../../../../assets/images/profilePic.png" title="Change picture" (click)="openModal(UpdatePic)"class="profilePic">		
-			<img *ngIf="currentUser.images!=null"[src]="currentUser.images" (click)="openModal(UpdatePic)"title="Change picture" class="profilePic userPic">		
+			<img *ngIf="dbImage==null" src="../../assets/images/profil.jpg" title="Change picture" (click)="openModal(UpdatePic)"class="profilePic">		
+			<img *ngIf="dbImage!=null" [src]="dbImage" (click)="openModal(UpdatePic)"title="Change picture" class="profilePic userPic">		
+
+
+
 
 		</div>
 	</div>
 
 
+	<!-- info -->
 
 	<div class="contact_form_section" *ngIf="update==false">
 		<div class="container">
 			<div class="row">
 				<div class="col">
 
+					<!-- Contact Form -->
 					<div class="contact_form_container"*ngIf="exist==true">
 						<div class="contact_title text-center">Personnal infos</div>
 						<form form class="contact_form text-center">
@@ -49,11 +54,13 @@
 	</div>
 
 
+<!-- update form -->
 <div class="contact_form_section" *ngIf="update==true">
 	<div class="container">
 		<div class="row">
 			<div class="col">
 
+				<!-- Contact Form -->
 				<div class="contact_form_container">
 					<div class="contact_title text-center">Update your infos</div>
 					<form form [formGroup]="profileFormUser" (ngSubmit)="editProfileUser()" class="contact_form text-center">
@@ -63,9 +70,9 @@
 		  <div class="alert alert-danger"*ngIf="profileUserControls['nomProfile'].errors['required']"> last name required</div>
 		</div>
 		<input type="text" class="contact_form_name input_field inputStyle form-control" formControlName="prenomProfile" placeholder="First Name"
-		[ngClass]="{ 'is-invalid': submittedUpdate && profileUserControls['prenomProfile'].errors }" />
- <div *ngIf="submittedUpdate && profileUserControls['prenomProfile'].errors" class="invalid-feedback">
-   <div class="alert alert-danger" *ngIf="profileUserControls['prenomProfile'].errors['required']">first name required</div>
+		[ngClass]="{ 'is-invalid': submittedUpdate && profileUserControls ['prenomProfile'].errors }" />
+ <div *ngIf="submittedUpdate && profileUserControls ['prenomProfile'].errors" class="invalid-feedback">
+   <div class="alert alert-danger" *ngIf="profileUserControls ['prenomProfile'].errors['required']">first name required</div>
  </div>
  <input type="text" class="contact_form_name input_field inputStyle form-control" formControlName="emailProfile" placeholder="Email"
  [ngClass]="{ 'is-invalid': submittedUpdate && profileUserControls['emailProfile'].errors }"  />
@@ -73,7 +80,7 @@
 <div class="alert alert-danger" *ngIf="profileUserControls['emailProfile'].errors['required']">Email required</div>
 </div>
 <div class="alert alert-danger invalid-feedback"
-  *ngIf="profileFormUser.controls['emailProfile'].errors && profileFormUser.controls['emailProfile'].errors['email']">email must be valid
+  *ngIf="profileFormUser.controls['emailProfile'].errors && profileFormUser.controls['emailProfile'].errors['required']">email must be valid
 </div>
 <input type="text" class="contact_form_name input_field inputStyle form-control" formControlName="phoneProfile" placeholder="Phone number"
 [ngClass]="{ 'is-invalid': submittedUpdate && profileUserControls['phoneProfile'].errors }" />
@@ -89,8 +96,11 @@ phone number must contain at least 8 caracters
 phone number required
 </div>
 </div>
-						<button type="submit" id="form_submit_button" class="form_submit_button button trans_200">finish</button>
+						<!-- <button type="submit" id="form_submit_button" class="form_submit_button button trans_200">finish</button> -->
+						<button pButton pRipple type="submit" id="form_submit_button"  class="p-button-rounded p-button-success">finish</button>
+						<button (click)="reloadPage()" >cancel</button>
 					</form>
+					
 				</div>
 
 			</div>
@@ -103,76 +113,20 @@ phone number required
 <ng-template #UpdatePic>
 	<div class="modal-body text-center">
 	  <p class="formTitle">Update profile picture</p>
-	  <form class="formLength"name="updateUserPic">
-		<input type="file" class="form-control"(change)="onSelectFile($event)" accept="image/*" />
+	  <form class="formLength" name="updateUserPic">
+		<input type="file" class="form-control"  (change)="onImageUpload($event)" accept="image/*"
+		 />
 		
-			<div  *ngIf="url!=null">
+			<div  *ngIf="url!=null" >
 			  <img class=" UpdateProfilePic" [src]="url">
 			  
 			</div>
 		
 		
-		<button type="button" *ngIf="currentUser.images==null" (click)="uploadImage()" class="form_submit_button button">Add</button>
-		<button type="button" *ngIf="currentUser.images!=null"(click)="updateImage()" class="form_submit_button button">Update</button>
+		<button type="button" *ngIf="dbImage==null" (click)="imageUploadAction()" class="form_submit_button button">Add</button>
+		<button type="button" *ngIf="dbImage!=null"(click)="imageUploadAction()" class="form_submit_button button">Update</button>
 		<button type="button" class="form_submit_button button" style="margin-left: 15px;"(click)="resetAddForm()">Cancel</button>
   
 	  </form>
 	</div>
   </ng-template>
-
- -->
-
-<!--Navbar-->
-<mdb-navbar SideClass="navbar navbar-expand-lg navbar-dark indigo">
-
-	<mdb-navbar-brand>
-	  <a class="navbar-brand" href="#">
-		<img src="https://mdbootstrap.com/img/logo/mdb-transparent.webp" height="30" class="d-inline-block align-top" alt="">
-	  </a>
-	</mdb-navbar-brand>
-  
-	<mdb-icon fas icon="angle-left" size="lg" class="text-white mr-auto d-flex d-md-none align-self-center"></mdb-icon>
-  
-	<!-- Collapsible content -->
-	<links>
-  
-	  <!-- Links -->
-	  <ul class="navbar-nav mr-auto">
-		<li class="nav-item active">
-		  <a class="nav-link waves-light" mdbWavesEffect>Home<span class="sr-only">(current)</span></a>
-		</li>
-		<li class="nav-item">
-		  <a class="nav-link waves-light" mdbWavesEffect>Features</a>
-		</li>
-		<li class="nav-item">
-		  <a class="nav-link waves-light" mdbWavesEffect>Pricing</a>
-		</li>
-  
-		<!-- Dropdown -->
-		<li class="nav-item dropdown" dropdown>
-		  <a dropdownToggle mdbWavesEffect type="button" class="nav-link dropdown-toggle waves-light" mdbWavesEffect>
-			Basic dropdown<span class="caret"></span></a>
-		  <div *dropdownMenu class="dropdown-menu dropdown dropdown-primary" role="menu">
-			<a class="dropdown-item waves-light" mdbWavesEffect href="#">Action</a>
-			<a class="dropdown-item waves-light" mdbWavesEffect href="#">Another action</a>
-			<a class="dropdown-item waves-light" mdbWavesEffect href="#">Something else here</a>
-			<div class="divider dropdown-divider"></div>
-			<a class="dropdown-item waves-light" mdbWavesEffect href="#">Separated link</a>
-		  </div>
-		</li>
-  
-	  </ul>
-	  <!-- Links -->
-  
-	  <!-- Search form -->
-	  <form class="form-inline waves-light" mdbWavesEffect>
-		<div class="md-form my-0">
-		  <input class="form-control mr-sm-2" type="text" placeholder="Search">
-		</div>
-	  </form>
-	</links>
-	<!-- Collapsible content -->
-  
-  
-  </mdb-navbar>
-  <!--/.Navbar-->

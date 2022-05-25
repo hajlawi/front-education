@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {OwlOptions} from "ngx-owl-carousel-o";
+import { TokenStorageService } from 'src/app/service/tokenService/token-storage.service';
 
 @Component({
   selector: 'app-welcome',
@@ -33,11 +34,13 @@ export class WelcomeComponent implements OnInit {
     nav: true
   }
 
+role:any;
 
-
-  constructor() { }
+  constructor(private tokenStorage:TokenStorageService) { }
 
   ngOnInit(): void {
+    this.role = this.tokenStorage.getUser().roles;
+    console.log("roleWelcome"+this.role);
   }
 
 }

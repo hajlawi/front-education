@@ -1,0 +1,7 @@
+.fa{
+    float : right; 
+    color: #a12c2f;
+  }
+  .meeting-item img {
+    transition: .5s;
+  }

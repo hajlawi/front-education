@@ -1,19 +1,20 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit, TemplateRef } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { User } from '../core/models/user';
-import {BsModalRef, BsModalService} from 'ngx-bootstrap';
+import { BsModalRef, BsModalService } from 'ngx-bootstrap';
+import { Enseignant } from 'src/app/models/enseignant.model';
+import { EnseignantService } from 'src/app/service/enseignant/enseignant.service';
 import { TokenStorageService } from 'src/app/service/tokenService/token-storage.service';
 import { UserService } from 'src/app/service/userService/user.service';
 import Swal from 'sweetalert2';
-import { Image } from '../core/models/image';
-import { HttpClient } from '@angular/common/http';
+import { User } from '../core/models/user';
 
 @Component({
-  selector: 'app-user-profile',
-  templateUrl: './user-profile.component.html',
-  styleUrls: ['./user-profile.component.css']
+  selector: 'app-mon-profil',
+  templateUrl: './mon-profil.component.html',
+  styleUrls: ['./mon-profil.component.css']
 })
-export class UserProfileComponent implements OnInit {
+export class MonProfilComponent implements OnInit {
 
   submittedUpdate = false;
   currentUser : User;
@@ -39,11 +40,13 @@ export class UserProfileComponent implements OnInit {
   postResponse: any;
   successResponse: string;
   image: any;
+  displayBasic: boolean;
   constructor(private userService: UserService,
     private tokenStorage:TokenStorageService,
     private formBuilder: FormBuilder,
     private modalService: BsModalService,
-    private httpClient: HttpClient
+    private httpClient: HttpClient,
+    private enseignantService:EnseignantService
     ) { }
 
   ngOnInit(): void {
@@ -53,11 +56,10 @@ export class UserProfileComponent implements OnInit {
     this.profileFormUser = this.formBuilder.group({
       nomProfile: [null, Validators.required],
       prenomProfile: [null, [Validators.required]],
-      phoneProfile: [null, [
-        Validators.required,
-        Validators.pattern(/^[0-9]\d*$/),
-        Validators.minLength(8),]],
+      phoneProfile: [null,[Validators.required,Validators.pattern(/^[0-9]\d*$/),Validators.minLength(8),]],
       emailProfile: [null, Validators.required, Validators.email, Validators.minLength(5)],
+      biography: [null, Validators.required],
+      specialite: [null, Validators.required],
     });
     
     this.role = this.tokenStorage.getUser().roles;
@@ -70,22 +72,22 @@ getUserById() {
 
   this.userService.getUser(this.idUser).subscribe(res => {
     this.currentUser = res;
-  
+    console.log("userrrrrr"+JSON.stringify(this.currentUser) );
     this.exist=true;
-   // console.log("userrrrrr"+JSON.stringify(this.currentUser) );
-/*this.userService.getImage(this.currentUser.images.id).subscribe(data=>{
-  this.currentImage=data; 
-  console.log("data  hellooo"+this.currentImage);
-});*/
+
     this.profileFormUser.setValue({
       nomProfile: this.currentUser.nom,
       prenomProfile: this.currentUser.prenom,
       phoneProfile: this.currentUser.numTel,
       emailProfile: this.currentUser.email,
-
+      biography:this.currentUser.enseignant.biography,
+      specialite:this.currentUser.enseignant.specialite,
+   
 
     });
+  
   });
+ 
 }
 
 get profileUserControls() {
@@ -110,6 +112,8 @@ editProfileUser(){
       prenom: this.profileFormUser.value.prenomProfile,
       email: this.profileFormUser.value.emailProfile,
       numTel: this.profileFormUser.value.phoneProfile,
+      biography:this.profileFormUser.value.biography,
+      specialite:this.profileFormUser.value.specialite,
      // mdp: this.profileFormUser.value.password,
     };
     this.idUser = this.tokenStorage.getUser().id;
@@ -246,4 +250,7 @@ imageUploadAction() {
   reloadPage() {
     window.location.reload();
  }
+ showBasicDialog() {
+  this.displayBasic = true;
+}
 }
