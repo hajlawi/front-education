@@ -165,10 +165,9 @@
 
                             <!-- Form Group (location)-->
                             <div class="col-md-6">
-                                <label class="small mb-1" for="inputLocation">Biographie</label>
+                                <label class="small mb-1" for="inputBiography">Biographie</label>
                                 <input class="form-control" id="inputBiography" type="text"
-                                formControlName="biography" placeholder="Biography"
-                                [ngClass]="{ 'is-invalid': submittedUpdate && profileUserControls['biography'].errors }" />
+                                formControlName="biography" placeholder="Biography" />
                        <!--          <div *ngIf="submittedUpdate && profileUserControls ['biography'].errors"
                                     class="invalid-feedback">
                                     <div class="alert alert-danger"
@@ -177,10 +176,9 @@
                                 </div> -->
                             </div>
                             <div class="col-md-6">
-                                <label class="small mb-1" for="inputLocation">Spécialite</label>
+                                <label class="small mb-1" for="inputBiography">Spécialite</label>
                                 <input class="form-control" id="inputBiography" type="text"
-                                formControlName="specialite" placeholder="specialite"
-                                [ngClass]="{ 'is-invalid': submittedUpdate && profileUserControls['specialite'].errors }" />
+                                formControlName="specialite" placeholder="specialite" />
                         <!--         <div *ngIf="submittedUpdate && profileUserControls ['specialite'].errors"
                                 class="invalid-feedback">
                                 <div class="alert alert-danger"
@@ -191,7 +189,7 @@
                         </div>
                         
                         <!-- Save changes button-->
-                        <button class="btn btn-success"  type="submit"  (click)="showBasicDialog()">Save changes</button>
+                        <button class="btn btn-success"  type="submit"  >Enregistrer</button>
                         <button  class="btn btn-danger" (click)="displayBasic=false" 
                             styleClass="p-button-text" style="margin-left: 15px;" >Fermer</button>
                     </form>

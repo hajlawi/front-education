@@ -92,4 +92,8 @@ getUsersImgs(): Observable<any> {
 
   }
 
+  viewImage( id: number): Observable<any> {
+    return this.http.get(`http://localhost:8093/api/imageUser/get/image/info/${id}`);
+
+  }
 }

@@ -5,6 +5,6 @@ export class Formation {
     description: string;
     section:string;
     Video:Video;
-    
+    prix:number
 
 }

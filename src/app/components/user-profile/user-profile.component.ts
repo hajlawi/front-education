@@ -109,7 +109,7 @@ editProfileUser(){
       nom: this.profileFormUser.value.nomProfile,
       prenom: this.profileFormUser.value.prenomProfile,
       email: this.profileFormUser.value.emailProfile,
-      numTel: this.profileFormUser.value.phoneProfile,
+      numTel: this.profileFormUser.value.phoneProfile
      // mdp: this.profileFormUser.value.password,
     };
     this.idUser = this.tokenStorage.getUser().id;

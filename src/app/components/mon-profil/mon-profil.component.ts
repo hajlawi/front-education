@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit, TemplateRef } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { data } from 'jquery';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap';
 import { Enseignant } from 'src/app/models/enseignant.model';
 import { EnseignantService } from 'src/app/service/enseignant/enseignant.service';
@@ -40,6 +41,7 @@ export class MonProfilComponent implements OnInit {
   postResponse: any;
   successResponse: string;
   image: any;
+  enseignant:any;
   displayBasic: boolean;
   constructor(private userService: UserService,
     private tokenStorage:TokenStorageService,
@@ -54,16 +56,17 @@ export class MonProfilComponent implements OnInit {
     this.getUserById();
     
     this.profileFormUser = this.formBuilder.group({
-      nomProfile: [null, Validators.required],
+      nomProfile: [null, [Validators.required]],
       prenomProfile: [null, [Validators.required]],
       phoneProfile: [null,[Validators.required,Validators.pattern(/^[0-9]\d*$/),Validators.minLength(8),]],
-      emailProfile: [null, Validators.required, Validators.email, Validators.minLength(5)],
-      biography: [null, Validators.required],
-      specialite: [null, Validators.required],
+      emailProfile: [null, [Validators.required, Validators.email, Validators.minLength(5)]],
+      biography: [null, [Validators.required]],
+      specialite: [null, [Validators.required]]
     });
     
     this.role = this.tokenStorage.getUser().roles;
     this.viewImage();
+
   }
 //get user by id
 getUserById() {
@@ -74,7 +77,10 @@ getUserById() {
     this.currentUser = res;
     console.log("userrrrrr"+JSON.stringify(this.currentUser) );
     this.exist=true;
-
+    console.log("ensssssssss  "+this.currentUser.enseignant.specialite );
+    this.enseignant=this.currentUser.enseignant.id;
+    sessionStorage.setItem('currentEnseignant', JSON.stringify(this.enseignant));
+    console.log("enseignant"+this.enseignant);
     this.profileFormUser.setValue({
       nomProfile: this.currentUser.nom,
       prenomProfile: this.currentUser.prenom,
@@ -82,8 +88,6 @@ getUserById() {
       emailProfile: this.currentUser.email,
       biography:this.currentUser.enseignant.biography,
       specialite:this.currentUser.enseignant.specialite,
-   
-
     });
   
   });
@@ -114,13 +118,17 @@ editProfileUser(){
       numTel: this.profileFormUser.value.phoneProfile,
       biography:this.profileFormUser.value.biography,
       specialite:this.profileFormUser.value.specialite,
+      
      // mdp: this.profileFormUser.value.password,
+
     };
     this.idUser = this.tokenStorage.getUser().id;
   this.userService
     .updateUser(this.idUser, data)
     .subscribe(
+
       (response) => {
+   
         console.log("userUpdate"+data);
         console.log(response);
         Swal.fire('Your profile was updated successfully!', '', 'success');
@@ -227,12 +235,13 @@ imageUploadAction() {
     );
   }
   viewImage() {
-    this.httpClient.get('http://localhost:8093/api/imageUser/get/image/info/' + this.idUser)
+  //  this.httpClient.get('http://localhost:8093/api/imageUser/get/image/info/' + this.idUser)
+    this.userService.viewImage(this.idUser)
       .subscribe(
         res => {
           this.postResponse = res;
           this.dbImage = 'data:image/jpeg;base64,' + this.postResponse.image;
-       //   console.log("ellolllllllllll", this.dbImage )
+    
         }
       );
   }
