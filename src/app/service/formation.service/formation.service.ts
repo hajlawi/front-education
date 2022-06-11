@@ -23,7 +23,7 @@ formation:any;
 
   }
 getFormation(id: number){
-    return this.http.get<Formation>(`${environment.urlFormation}formation/${id}`);
+    return this.http.get<Formation>(`${environment.urlFormation}/formation/${id}`);
 }
 
 saveFormation(formation:Formation,id: number,Video:any):Observable<any>{

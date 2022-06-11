@@ -86,9 +86,18 @@ body{margin-top:20px;
     }
     .button {
        background-color: #a12c2f;
-       border-radius:20rem
+       border-radius:20rem;
+       border-color: transparent;
+       color: white;
+       padding: 1% 8%;
     }
     .btn{
         padding-right: 20px;
     }
- 
+    .mt-4 {
+        margin-top: 6.5rem !important;
+    }
+    .fa-pencil-square-o{ 
+        font-size: 1.3em !important;
+        padding-right: 2px !important;
+    }

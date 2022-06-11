@@ -10,7 +10,7 @@ export class EnseignantService {
 
   constructor(private http: HttpClient) { }
   getEnseignant(id:number): Observable<any> {
-    return this.http.get(environment.urlEnseignant+`enseignant/${id}`);
+    return this.http.get(environment.urlEnseignant+`/enseignant/${id}`);
   
   }
 }

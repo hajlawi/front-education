@@ -3,6 +3,7 @@
   background-color: #1f272b;
   position: relative;
   z-index: 1111;
+  height: 31px;
 }
 
 .sub-header .left-content p {

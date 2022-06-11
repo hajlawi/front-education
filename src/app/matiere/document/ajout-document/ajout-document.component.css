@@ -1,0 +1,7 @@
+.back{
+    background-color: white;
+    height: 100px;
+}
+::ng-deep .p-dialog-header-icon{
+    display: none ;
+}

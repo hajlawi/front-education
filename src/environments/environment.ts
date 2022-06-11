@@ -6,8 +6,11 @@ export const environment = {
   production: false,
   urlAuth :'http://localhost:8093/auth/signin',
   urlRegistration: 'http://localhost:8093/auth/signup',
-  urlFormation:'http://localhost:8099/api/formation/',
+  urlFormation:'http://localhost:8099/api/formation',
   urlEnseignant:'http://localhost:8099/api/enseignant',
+  urlFile:'http://localhost:8099/api/file',
+  urlDoc:'http://localhost:8099/api/document',
+  urlMatiere:'http://localhost:8099/api/matiere',
 };
 
 /*

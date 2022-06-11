@@ -25,7 +25,6 @@ export class MonProfilComponent implements OnInit {
   role:any;
   ListActivity:any;
   exist=false;
-  update=false;
   listRes: any;
   modalRef: BsModalRef;
   selectedImg?: File;
@@ -42,13 +41,11 @@ export class MonProfilComponent implements OnInit {
   successResponse: string;
   image: any;
   enseignant:any;
-  displayBasic: boolean;
+  displayBasic: boolean = false;
   constructor(private userService: UserService,
     private tokenStorage:TokenStorageService,
     private formBuilder: FormBuilder,
-    private modalService: BsModalService,
-    private httpClient: HttpClient,
-    private enseignantService:EnseignantService
+    private modalService: BsModalService
     ) { }
 
   ngOnInit(): void {
@@ -93,58 +90,6 @@ getUserById() {
   });
  
 }
-
-get profileUserControls() {
-  return this.profileFormUser.controls;
-}
-
-showUpdateForm(){
-  this.update=true;
-}
-//update profile
-editProfileUser(){
-  this.update=false;
-  this.submittedUpdate=true;
-  if (this.profileFormUser.invalid) {
-    console.log("error userUpdate");
-    return;
-  
-  }
-  let 
-    data = {
-      nom: this.profileFormUser.value.nomProfile,
-      prenom: this.profileFormUser.value.prenomProfile,
-      email: this.profileFormUser.value.emailProfile,
-      numTel: this.profileFormUser.value.phoneProfile,
-      biography:this.profileFormUser.value.biography,
-      specialite:this.profileFormUser.value.specialite,
-      
-     // mdp: this.profileFormUser.value.password,
-
-    };
-    this.idUser = this.tokenStorage.getUser().id;
-  this.userService
-    .updateUser(this.idUser, data)
-    .subscribe(
-
-      (response) => {
-   
-        console.log("userUpdate"+data);
-        console.log(response);
-        Swal.fire('Your profile was updated successfully!', '', 'success');
-        this.ngOnInit();
-      },
-      (error) => {
-        console.log(error);
-      }
-      
-    );
-}
-
-
- //select image
-
-
 
 onSelectFile(event:any) { // called each time file input changes
   this.selectedImg = event.target.files[0];
@@ -261,5 +206,13 @@ imageUploadAction() {
  }
  showBasicDialog() {
   this.displayBasic = true;
+}
+
+getNewData(event:any){
+  this.displayBasic=event;
+  this.ngOnInit(); 
+}
+onCloseDialog(){
+  this.displayBasic=false;
 }
 }

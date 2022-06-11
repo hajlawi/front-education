@@ -38,6 +38,18 @@ import {ButtonModule} from 'primeng/button';
 import { AddFormationComponent } from './components/formation/add-formation/add-formation/add-formation.component';
 import { MonProfilComponent } from './components/mon-profil/mon-profil.component';
 import {DialogModule} from 'primeng/dialog';
+import { UpdateProfilDialogComponent } from './components/mon-profil/update-profil-dialog/update-profil-dialog.component';
+import { EconomieGestionComponent } from './matiere/economie-gestion/economie-gestion.component';
+import { MathematiquesComponent } from './matiere/mathematiques/mathematiques.component';
+import { TechniqueComponent } from './matiere/technique/technique.component';
+import { SciencesExperimentalesComponent } from './matiere/sciences-experimentales/sciences-experimentales..component';
+import { DocumentComponent } from './matiere/document/document.component';
+import { LettresComponent } from './matiere/lettres/lettres.component';
+import { InformatiqueComponent } from './matiere/informatique/informatique.component';
+import { AjoutDocumentComponent } from './matiere/document/ajout-document/ajout-document.component';
+import { PasswordForgottenComponent } from './components/authentification/password-forgotten/password-forgotten.component';
+import { ResetPasswordComponent } from './components/authentification/reset-password/reset-password.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -54,6 +66,17 @@ import {DialogModule} from 'primeng/dialog';
     AllFormationComponent,
     AddFormationComponent,
     MonProfilComponent,
+    EconomieGestionComponent,
+    SciencesExperimentalesComponent,
+    TechniqueComponent,
+    MathematiquesComponent,
+    UpdateProfilDialogComponent,
+    DocumentComponent,
+    LettresComponent,
+    InformatiqueComponent,
+    AjoutDocumentComponent,
+    PasswordForgottenComponent,
+    ResetPasswordComponent
 
   ],
   imports: [

@@ -100,23 +100,24 @@ resetAddForm() {
 }
 
 
-onSaveFormation(formFormation:any){
+/*onSaveFormation(formFormation:any){
   this.formation=formFormation;
 
- // formationForm.Video=this.selectedVd
-    this.formationService.saveFormation2(this.formation).subscribe((data: 
-      {}) => {
-            this.router.navigate(['/ajout-formation'])
-          })
-          alert('SUCCESS!! :-)');
 
     
-}
+}*/
 
 onSubmit() {
 
 
-this.onSaveFormation(this.formation);
+ // formationForm.Video=this.selectedVd
+
+ this.formationService.saveFormation2(this.formation).subscribe((data: 
+  {}) => {
+        this.router.navigate(['/ajout-formation'])
+      })
+      alert('SUCCESS!! :-)');
+//this.onSaveFormation(this.formation);
 
 
 }

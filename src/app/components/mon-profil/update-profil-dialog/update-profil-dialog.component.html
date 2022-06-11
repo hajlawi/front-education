@@ -1,0 +1,90 @@
+<p-dialog [(visible)]="displayBasic" [style]="{width: '60vw'}">
+
+    <div class="card mb-4">
+        <div class="card-header">Account Details</div>
+        <div class="card-body">
+            <form form [formGroup]="profileFormUser" (ngSubmit)="editProfileUser()"
+                class="contact_form text-center">
+                <div class="row gx-3 mb-3">
+                    <div class="col-md-6">
+
+                        <label class="small mb-1" for="inputUsername">Nom</label>
+                        <input class="contact_form_name  inputStyle form-control input_field" id="inputUsername"
+                            type="text" formControlName="nomProfile"
+                            [ngClass]="{ 'is-invalid': submittedUpdate && profileUserControls['nomProfile'].errors }"
+                            ngDefaultControl />
+                        <div *ngIf="submittedUpdate && profileUserControls['nomProfile'].errors"
+                            class="invalid-feedback">
+                            <div class="alert alert-danger"
+                                *ngIf="profileUserControls['nomProfile'].errors['required']">
+                                last name required</div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <label class="small mb-1" for="inputFirstName">Prenom</label>
+                        <input class="form-control" id="inputFirstName" type="text"
+                            formControlName="prenomProfile" placeholder="First Name"
+                            [ngClass]="{ 'is-invalid': submittedUpdate && profileUserControls ['prenomProfile'].errors }" />
+                        <div *ngIf="submittedUpdate && profileUserControls ['prenomProfile'].errors"
+                            class="invalid-feedback">
+                            <div class="alert alert-danger"
+                                *ngIf="profileUserControls ['prenomProfile'].errors['required']">
+                                first name required</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row gx-3 mb-3">
+                    <div class="col-md-6">
+                        <label class="small mb-1" for="inputOrgName">Numéro de mobile</label>
+                        <input class="form-control" id="inputOrgName" type="text" formControlName="phoneProfile"
+                            placeholder="Phone number"
+                            [ngClass]="{ 'is-invalid': submittedUpdate && profileUserControls['phoneProfile'].errors }" />
+                        <div class="alert alert-danger invalid-feedback" *ngIf="profileUserControls['phoneProfile'].errors &&
+                         profileUserControls['phoneProfile'].errors['pattern']"> phone number must contain only
+                            digits
+                        </div>
+                        <div class="alert alert-danger invalid-feedback"
+                            *ngIf="profileFormUser.controls['phoneProfile'].touched && profileFormUser.controls['phoneProfile'].errors">
+                            phone number must contain at least 8 caracters
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <label class="small mb-1" for="inputLastName">Email</label>
+                        <input class="form-control" id="inputLastName" type="text"
+                            formControlName="emailProfile" placeholder="Email"
+                            [ngClass]="{ 'is-invalid': submittedUpdate && profileUserControls['emailProfile'].errors }" />
+                        <div *ngIf="submittedUpdate && profileUserControls['emailProfile'].errors"
+                            class="invalid-feedback">
+                            <div class="alert alert-danger"
+                                *ngIf="profileUserControls['emailProfile'].errors['required']">Email required
+                            </div>
+                        </div>
+                        <div class="alert alert-danger invalid-feedback"
+                            *ngIf="profileFormUser.controls['emailProfile'].errors && profileFormUser.controls['emailProfile'].errors['required']">
+                            email must be valid
+                        </div>
+                    </div>
+                </div>
+                <div class="row gx-3 mb-3">
+
+                    <div class="col-md-6">
+                        <label class="small mb-1" for="inputBiography">Biographie</label>
+                        <input class="form-control" id="inputBiography" type="text" formControlName="biography"
+                            placeholder="Biography" />
+
+                    </div>
+                    <div class="col-md-6">
+                        <label class="small mb-1" for="inputBiography">Spécialite</label>
+                        <input class="form-control" id="inputBiography" type="text" formControlName="specialite"
+                            placeholder="specialite" />
+
+                    </div>
+                </div>
+
+                <button class="btn btn-success" type="submit">Enregistrer</button>
+                <button class="btn btn-danger" (click)="onCloseDialog()" styleClass="p-button-text"
+                    style="margin-left: 15px;">Fermer</button>
+            </form>
+        </div>
+    </div>
+</p-dialog>

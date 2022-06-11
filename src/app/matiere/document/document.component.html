@@ -1,0 +1,223 @@
+
+<div class="container">
+    
+    <i class="fa fa-plus-square fa-3x" aria-hidden="true" title="Ajouter Document" 
+   (click)="showBasicDialog()" ></i>
+  <!--  routerLink="/ajout-document" routerLinkActive="active" -->
+    <mat-tab-group>
+       
+        <mat-tab label="COURS">
+            <div class="as-mainwrapper">
+                <!--Bg White Start-->
+                <div class="bg-white">
+                    <!--Course Area Start-->
+                    <div class="course-area section-padding course-page">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-lg-4 col-md-6 col-12" *ngFor="let fileData of fileList" >
+                                    <div class="single-item" (click)="downloadFiles(fileData)" >
+                                        <div class="single-item-image overlay-effect">
+                                            <a ><img src="assets/images/service-item-bg.jpg;" alt=""></a>
+                                        </div>
+                                        <div class="single-item-text">
+                                            <h4><a href="#">{{fileData.name}}</a></h4>
+                                            <div class="single-item-text-info">
+                                                <span>Date : <span>{{fileData.date |date:'longDate'}}</span></span><br>
+                                            </div>
+                                            <!--     <p>There are many variations of  </p>
+                                <div class="single-item-content">
+                                    <div class="single-item-comment-view">
+                                        <span><i class="zmdi zmdi-eye"></i>59</span>
+                                        <span><i class="zmdi zmdi-comments"></i>19</span>
+                                    </div>
+                             
+                                </div> -->
+                                        </div>
+                                        <div class="button-bottom">
+                                            <a href="#" class="button-default">Télecharger</a>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                    <!--         <div class="list-group">
+                                <a *ngFor="let fileData of fileList" class="list-group-item list-group-item-action"
+                                 (click)="downloadFiles(fileData)" >{{fileData.name}}</a>
+                       
+                            </div> -->
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="pagination-content">
+                                        <ul class="pagination">
+                                            <li><a href="#"><i class="zmdi zmdi-chevron-left"></i></a></li>
+                                            <li class="current"><a href="#"><i class="zmdi zmdi-chevron-right"></i></a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </mat-tab>
+        <mat-tab label="RÉSUMÉ">
+            <div class="as-mainwrapper">
+                <!--Bg White Start-->
+                <div class="bg-white">
+                    <!--Course Area Start-->
+                    <div class="course-area section-padding course-page">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-lg-4 col-md-6 col-12">
+                                    <div class="single-item">
+                                        <div class="single-item-image overlay-effect">
+                                            <a href="#"><img src="assets/images/course-01.jpg" alt=""></a>
+                                        </div>
+                                        <div class="single-item-text">
+                                            <h4><a href="#">cours 1</a></h4>
+                                            <div class="single-item-text-info">
+                                                <span>By: <span>M S Nawaz</span></span>
+                                                <span>Date: <span>20.5.15</span></span>
+                                            </div>
+                                            <!--     <p>There are many variations of  </p>
+                                <div class="single-item-content">
+                                    <div class="single-item-comment-view">
+                                        <span><i class="zmdi zmdi-eye"></i>59</span>
+                                        <span><i class="zmdi zmdi-comments"></i>19</span>
+                                    </div>
+                             
+                                </div> -->
+                                        </div>
+                                        <div class="button-bottom">
+                                            <a href="#" class="button-default">Télecharger</a>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="pagination-content">
+                                        <ul class="pagination">
+                                            <li><a href="#"><i class="zmdi zmdi-chevron-left"></i></a></li>
+                                            <li class="current"><a href="#"><i class="zmdi zmdi-chevron-right"></i></a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </mat-tab>
+
+        <mat-tab label="SÉRIE">
+            <div class="as-mainwrapper">
+                <!--Bg White Start-->
+                <div class="bg-white">
+                    <!--Course Area Start-->
+                    <div class="course-area section-padding course-page">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-lg-4 col-md-6 col-12">
+                                    <div class="single-item">
+                                        <div class="single-item-image overlay-effect">
+                                            <a href="#"><img src="assets/images/course-01.jpg" alt=""></a>
+                                        </div>
+                                        <div class="single-item-text">
+                                            <h4><a href="#">cours 1</a></h4>
+                                            <div class="single-item-text-info">
+                                                <span>By: <span>M S Nawaz</span></span>
+                                                <span>Date: <span>20.5.15</span></span>
+                                            </div>
+                                            <!--     <p>There are many variations of  </p>
+                                <div class="single-item-content">
+                                    <div class="single-item-comment-view">
+                                        <span><i class="zmdi zmdi-eye"></i>59</span>
+                                        <span><i class="zmdi zmdi-comments"></i>19</span>
+                                    </div>
+                             
+                                </div> -->
+                                        </div>
+                                        <div class="button-bottom">
+                                            <a href="#" class="button-default">Télecharger</a>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="pagination-content">
+                                        <ul class="pagination">
+                                            <li><a href="#"><i class="zmdi zmdi-chevron-left"></i></a></li>
+                                            <li class="current"><a href="#"><i class="zmdi zmdi-chevron-right"></i></a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </mat-tab>
+        <mat-tab label="EXAMEN">
+            <div class="as-mainwrapper">
+                <!--Bg White Start-->
+                <div class="bg-white">
+                    <!--Course Area Start-->
+                    <div class="course-area section-padding course-page">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-lg-4 col-md-6 col-12">
+                                    <div class="single-item">
+                                        <div class="single-item-image overlay-effect">
+                                            <a href="#"><img src="assets/images/course-01.jpg" alt=""></a>
+                                        </div>
+                                        <div class="single-item-text">
+                                            <h4><a href="#">cours 1</a></h4>
+                                            <div class="single-item-text-info">
+                                                <span>By: <span>M S Nawaz</span></span>
+                                                <span>Date: <span>20.5.15</span></span>
+                                            </div>
+                                            <!--     <p>There are many variations of  </p>
+                                <div class="single-item-content">
+                                    <div class="single-item-comment-view">
+                                        <span><i class="zmdi zmdi-eye"></i>59</span>
+                                        <span><i class="zmdi zmdi-comments"></i>19</span>
+                                    </div>
+                             
+                                </div> -->
+                                        </div>
+                                        <div class="button-bottom">
+                                            <a href="#" class="button-default">Télecharger</a>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="pagination-content">
+                                        <ul class="pagination">
+                                            <li><a href="#"><i class="zmdi zmdi-chevron-left"></i></a></li>
+                                            <li class="current"><a href="#"><i class="zmdi zmdi-chevron-right"></i></a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </mat-tab>
+
+    </mat-tab-group>
+
+</div>
+<app-ajout-document [displayBasic]="displayBasic" [submittedUpdate]="submittedUpdate"
+(onChangeValues)="getNewData($event)" (onCloseDialog)="onCloseDialog()"></app-ajout-document>
