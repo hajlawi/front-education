@@ -1,4 +1,6 @@
 @import url("https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900");
+@import '~material-design-icons/iconfont/material-icons.css';
+
 /*
 ---------------------------------------------
 reset
@@ -228,4 +230,11 @@ body {
 
 .background-header .nav li a.active {
   color: #fb5849!important;
+}
+.input-error {
+  border-color: #f5222d !important;
+}
+.error-message {
+  margin-bottom: 0px;
+  color: #f5222d !important;
 }

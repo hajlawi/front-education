@@ -9,21 +9,24 @@
     display: flex; justify-content: center; align-items: center; width: 100%;
 
   }
-  section.contact-us #contact  a {
+  section.contact-us #contact-form  a {
     display: flex; justify-content: center; align-items: center;
+    color: #fff!important;
+    font-size: 16px;
   }
  
-  section.contact-us #contact {
-    background-color: #fff;
+  section.contact-us #contact-form{
+    background-color: rgb(0 0 0 / 42%);
+    box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%);
     border-radius: 20px;
-    padding: 40px;
+    padding: 47px;
     padding-bottom: 41px;
-    margin: -5% 0% 4% 56%;
-    width: 68%;
+    margin: 0% 5% 23% 59%;
+    width: 62%;
   }
 
 
-  section.contact-us #contact h2 {
+  section.contact-us #contact-form h2 {
     text-transform: uppercase;
     color: #1f272b;
     border-bottom: 1px solid #eee;
@@ -34,29 +37,28 @@
     text-align:center;
   }
   
-  section.contact-us #contact fieldset  {
- 
+  section.contact-us #contact-form fieldset {
     text-align:center;
   }
-  section.contact-us #contact input {
+  section.contact-us #contact-form input {
     width: 100%;
-    height: 40px;
-    border-radius: 20px;
+    height: 58px;
+    border-radius: 7px;
     background-color: #f7f7f7;
-    outline: none;
-    border: none;
-    box-shadow: none;
-    font-size: 13px;
+    font-size: 16px;
     font-weight: 500;
     color: #7a7a7a;
-    padding: 0px 15px;
-    margin-bottom: 30px;
-    text-align:center;
- 
- 
+    padding: 0px 50px;
+    margin-bottom: 8px;
+    text-align: left; 
+    margin-top: 13px;
   }
-  
-  section.contact-us #contact textarea {
+  ::ng-deep section.contact-us #contact-form input:focus {
+    outline: none !important;
+    border:1px solid #719ECE;
+    box-shadow: 0 0 10px #719ECE;
+  }
+  section.contact-us #contact-form textarea {
     width: 100%;
     min-height: 140px;
     max-height: 180px;
@@ -75,8 +77,8 @@
     margin: 20px;
     
   }
-  section.contact-us #contact button {
-    font-size: 13px;
+ #form-submit{
+    font-size: 15px;
     color: #fff;
     background-color: #a12c2f;
     padding: 12px 30px;
@@ -87,9 +89,12 @@
     transition: all .3s;
     border: none;
     outline: none;
+    width: 100%;
+    height: 44px;
+    margin-top: 25px;
   }
   
-  section.contact-us #contact button:hover {
+  #form-submit:hover {
     opacity: 0.9;
   }
   
@@ -151,7 +156,54 @@
   }
   .lost-password{
     display: flex;
-    padding-top: 2%;
+    padding-top: 3%;
   }
-  
-  
+  @media (min-width: 1400px) {
+      .container-xxl,
+      .container-xl,
+      .container-lg,
+      .container-md,
+      .container-sm,
+      .container {
+        max-width: 1556px;
+      }
+  }  
+
+  #logo-img {
+    border-radius: 50%;
+    width: 185px;
+    height: 160px;
+    border: 4px solid #f5a425;
+    margin: -7rem 2rem 2rem 8rem;
+    }
+::ng-deep .nb-theme-default nb-layout .layout {
+  background-color: transparent !important;
+  min-height: 21vh;
+}
+
+::ng-deep .nb-theme-default [nbInput].size-medium:not(.input-full-width) {
+  max-width: 27rem;
+}
+
+::ng-deep .nb-theme-default .nb-form-field-prefix-medium,
+.nb-theme-default .nb-form-field-suffix-medium {
+  padding-left: 3%;
+}
+.button-show-password{
+border: none;
+margin-top: 0.5rem;
+margin-left: -1rem;
+color: grey; 
+background-color: transparent;
+border-color: transparent;
+}
+::ng-deep .nb-theme-default nb-layout .layout .layout-container .content .columns nb-layout-column {
+  padding: 0rem;
+}
+::ng-deep  .nb-theme-default .nb-form-field-limited-width.nb-form-field-size-medium {
+  max-width: 100%;
+}
+fieldset {
+  padding: .35em 0em .625em;
+}
+.button-show-password:focus { box-shadow: none; }

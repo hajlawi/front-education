@@ -55,7 +55,7 @@
   display: block;
   font-weight: 500;
   font-size: 14px;
-  text-transform: uppercase;
+  text-transform: unset;
   color: #f5a425;
   -webkit-transition: all 0.3s ease 0s;
   -moz-transition: all 0.3s ease 0s;
@@ -87,7 +87,7 @@
   font-family: FontAwesome;
   content: "\f107";
   font-size: 12px;
-  color: #fff;
+  color:  #f5a425!important;
   position: absolute;
   right: 5px;
   top: 12px;
@@ -372,4 +372,17 @@
     display: flex !important;
   }
 }
+.background-header .main-nav .nav li.has-sub:after {
+  color: black !important;
+}
 
+@media (min-width: 1400px) {
+  .container-xxl,
+  .container-xl,
+  .container-lg,
+  .container-md,
+  .container-sm,
+  .container {
+    max-width: 1641px;
+  }
+}
