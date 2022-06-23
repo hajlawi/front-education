@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { MessageService } from 'primeng/api';
-import { Observable } from 'rxjs';
 import { FormService } from 'src/app/service/FormService.service';
 import { customEmailValidator, passwordStrengthValidator } from 'src/app/utils/validators.util';
 import { User } from '../../core/models/user';
@@ -17,17 +16,16 @@ export class LoginComponent implements OnInit {
   submitted = false;
   error = '';
   hide = true;
-  public currentUser: User;
+  currentUser: User;
   showPassword = true;
-
- user= sessionStorage.getItem('currentUser');
+  user = sessionStorage.getItem('currentUser');
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
     private authService: AuthService,
     private messageService: MessageService,
     public formService: FormService,
-  ) {}
+  ) { }
   ngOnInit() {
     this.loginForm = this.formBuilder.group({
       email: ['', Validators.required, customEmailValidator()],
@@ -42,7 +40,8 @@ export class LoginComponent implements OnInit {
     this.submitted = true;
     this.error = '';
     if (this.loginForm.invalid) {
-      this.error = 'Username and Password not valid !';
+      this.error = 'utilisateur ou mot de passe invalide';
+      this.loginForm.markAllAsTouched()
       return;
     } else {
       this.authService
@@ -50,29 +49,26 @@ export class LoginComponent implements OnInit {
         .subscribe(
           (res) => {
             if (res) {
-              console.log(res);
+              this.messageService.add({ severity: 'success', summary: 'Service Message', detail: 'Via MessageService' });
               const token = this.authService.currentUserValue.accessToken;
-              console.log(token);
               if (token) {
                 let BearerToken = 'Bearer ' + this.authService.currentUserValue.accessToken;
                 sessionStorage.setItem('bearerToken', BearerToken);
-            
                 this.router.navigate(['/welcome']);
-
               }
             } else {
-              this.messageService.add({severity:'success', summary:'Service Message', detail:'Via MessageService'});
+              this.messageService.add({ severity: 'error', summary: 'Problème d\'authentification', detail: 'Address mail ou mot de passe invalide.' });
               this.error = 'Invalid Login';
             }
-          },  
+          },
           (error) => {
-            this.messageService.add({severity:'success', summary:'Service Message', detail:'Via MessageService'});
+            this.messageService.add({ severity: 'error', summary: 'Problème d\'authentification', detail: 'Address mail ou mot de passe invalide.' });
 
             this.error = error;
             this.submitted = false;
           }
-      ),()=>{},()=>{
-      };
+        ), () => { }, () => {
+        };
 
     }
   }
@@ -86,4 +82,5 @@ export class LoginComponent implements OnInit {
   toggleShowPassword() {
     this.showPassword = !this.showPassword;
   }
+
 }

@@ -1,168 +1,269 @@
-
-  
-  /*
+/*
   ---------------------------------------------
   contact us
   ---------------------------------------------
   */
-  section.contact-us #col-lg-6 {
-    display: flex; justify-content: center; align-items: center;
+section.contact-us #col-lg-6 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
-  }
-  section.contact-us #contact  a {
-    display: flex; justify-content: center; align-items: center;
-  }
- 
-  section.contact-us #contact {
-    background-color: #fff;
-    border-radius: 20px;
-    padding: 40px;
-
-    padding-bottom: 41px;
-    margin: -5% 0% 5% 36%;
-    width: 68%;
-    width: 65%;
-  }
-
-
-  section.contact-us #contact h2 {
-    text-transform: uppercase;
-    color: #1f272b;
-    border-bottom: 1px solid #eee;
-    margin-bottom: 40px;
-    padding-bottom: 20px;
-    font-size: 22px;
-    font-weight: 700;
-    text-align:center;
-  }
-  
-  section.contact-us #contact fieldset  {
- 
-    text-align:center;
-  }
-  section.contact-us #contact input {
-    width: 100%;
-    height: 40px;
-    border-radius: 20px;
-    background-color: #f7f7f7;
-    outline: none;
-    border: none;
-    box-shadow: none;
-    font-size: 13px;
-    font-weight: 500;
-    color: #7a7a7a;
-    padding: 0px 15px;
-    margin-bottom: 30px;
-    text-align:center;
- 
- 
-  }
-  
-  section.contact-us #contact textarea {
-    width: 100%;
-    min-height: 140px;
-    max-height: 180px;
-    border-radius: 20px;
-    background-color: #f7f7f7;
-    outline: none;
-    border: none;
-    box-shadow: none;
-    font-size: 13px;
-    font-weight: 500;
-    color: #7a7a7a;
-    padding: 15px;
-    margin-bottom: 30px;
-  }
-  .our-courses .item{
-    margin: 20px;
-    
-  }
-  section.contact-us #contact button {
-    font-size: 13px;
-    color: #fff;
-    background-color: #a12c2f;
-    padding: 12px 30px;
-    display: inline-block;
-    border-radius: 22px;
-    font-weight: 500;
-    text-transform: uppercase;
-    transition: all .3s;
-    border: none;
-    outline: none;
-  }
-  
-  section.contact-us #contact button:hover {
-    opacity: 0.9;
-  }
-  
-  section.contact-us .right-info {
-    background-color: #a12c2f;
-    border-radius: 20px;
-    padding: 40px;
-  }
-  
-  section.contact-us .right-info ul li {
-    display: inline-block;
-    border-bottom: 1px solid rgba(250,250,250,0.15);
-    margin-bottom: 30px;
-    padding-bottom: 30px;
-  }
-  
-  section.contact-us .right-info ul li:last-child {
-    margin-bottom: 0;
-    padding-bottom: 0;
-    border-bottom: none;
-  }
-  
-  section.contact-us .right-info ul li h6 {
-    color: #fff;
-    font-size: 15px;
-    font-weight: 600;
-    margin-bottom: 10px;
-  
-  }
-  
-  section.contact-us .right-info ul li span {
-    display: block;
-    font-size: 18px;
-    color: #fff;
-    font-weight: 700;
-  }
-  
-  .footer {
-    text-align: center;
-    margin-top: 140px;
-    border-top: 1px solid rgba(250,250,250,0.15);
-    padding: 50px 0px;
-  }
-  .footer p {
-    text-transform: uppercase;
-    font-size: 14px;
-    color: #fff;
-  }
-  
-  .footer p a {
-    color: #f5a425;
-  }
-
-  ::ng-deep .input :focus{
-    outline: none !important;
-    border:1px solid red;
-    box-shadow: 0 0 10px #719ECE !important;  }
-
-  .inscription-fields{
-    display: flex;
-    flex-direction: column;
-    margin-right: 10px;
-  }
-  .inscription-field{
-display: flex;
-padding: 10px 10px 10px 15px;
-
-
-  }
-  
-  .col-lg-4{
-    padding: 0px 5px;
-margin-bottom: 30px;
 }
+
+section.contact-us #register-form a {
+  display: flex;
+  justify-content: right;
+  align-items: center;
+  color: #eee;
+
+}
+
+section.contact-us #register-form {
+  background-color: rgb(0 0 0 / 42%);
+  box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%);
+  border-radius: 20px;
+  padding: 20px 40px;
+  padding-bottom: 41px;
+  margin: -7% 0% 5% 36%;
+  width: 68%;
+}
+
+
+section.contact-us #register-form h2 {
+  text-transform: none;
+  color: #eee;
+  border-bottom: 1px solid #f5a425;
+  margin-bottom: 30px;
+  padding-bottom: 4px;
+  font-size: 22px;
+  font-weight: 700;
+  text-align: center;
+}
+
+section.contact-us #register-form fieldset {
+
+  text-align: center;
+}
+
+:host ::ng-deep section.contact-us #register-form input {
+  width: 100%;
+  height: 40px;
+  border-radius: 7px;
+  background-color: #f7f7f7;
+  outline: none;
+  box-shadow: none;
+  font-size: 15px;
+  font-weight: 500;
+  color: black;
+  padding: 0px 15px;
+  text-align: left;
+  max-width: 21rem;
+
+}
+
+section.contact-us #register-form textarea {
+  width: 100%;
+  min-height: 140px;
+  max-height: 180px;
+  border-radius: 20px;
+  background-color: #f7f7f7;
+  outline: none;
+  border: none;
+  box-shadow: none;
+  font-size: 13px;
+  font-weight: 500;
+  color: #7a7a7a;
+  padding: 15px;
+  margin-bottom: 30px;
+}
+
+.our-courses .item {
+  margin: 20px;
+
+}
+
+
+
+section.contact-us .right-info {
+  background-color: #a12c2f;
+  border-radius: 20px;
+  padding: 40px;
+}
+
+section.contact-us .right-info ul li {
+  display: inline-block;
+  border-bottom: 1px solid rgba(250, 250, 250, 0.15);
+  margin-bottom: 30px;
+  padding-bottom: 30px;
+}
+
+section.contact-us .right-info ul li:last-child {
+  margin-bottom: 0;
+  padding-bottom: 0;
+  border-bottom: none;
+}
+
+section.contact-us .right-info ul li h6 {
+  color: #fff;
+  font-size: 15px;
+  font-weight: 600;
+  margin-bottom: 10px;
+
+}
+
+section.contact-us .right-info ul li span {
+  display: block;
+  font-size: 18px;
+  color: #fff;
+  font-weight: 700;
+}
+
+.footer {
+  text-align: center;
+  margin-top: 140px;
+  border-top: 1px solid rgba(250, 250, 250, 0.15);
+  padding: 50px 0px;
+}
+
+.footer p {
+  text-transform: uppercase;
+  font-size: 14px;
+  color: #fff;
+}
+
+.footer p a {
+  color: #f5a425;
+}
+
+::ng-deep .input :focus {
+  outline: none !important;
+  border: 1px solid red;
+  box-shadow: 0 0 10px #719ECE !important;
+}
+
+.inscription-fields {
+  display: flex;
+  flex-direction: column;
+ /* margin-right: 10px;*/
+}
+
+.inscription-field {
+  display: flex;
+  padding: 10px 10px 10px 15px;
+  height: 70px;
+}
+
+.col-lg-4 {
+  padding: 0px 5px;
+  margin-bottom: 30px;
+}
+
+.col-lg-5 {
+  height: 12px;
+  padding: 9px 0px 0px;
+}
+
+.col-lg-5 label {
+  color: #fff;
+  font-weight: 700;
+  font-size: 15px;
+}
+
+#form-submit {
+  font-size: 15px;
+  color: #fff;
+  background-color: #a12c2f;
+  padding: 12px 30px;
+  display: inline-block;
+  border-radius: 22px;
+  font-weight: 500;
+  text-transform: uppercase;
+  transition: all .3s;
+  border: none;
+  outline: none;
+  width: 100%;
+  height: 44px;
+  margin-top: 25px;
+}
+
+.col-lg-8 {
+  margin-left: -4%;
+}
+
+::ng-deep .nb-theme-default nb-layout .layout .layout-container .content .columns nb-layout-column {
+  padding: 0%;
+}
+
+::ng-deep .nb-theme-default nb-layout .layout {
+  background-color: transparent !important;
+}
+
+::ng-deep section.contact-us #register-form .button-show-password {
+  border: none !important;
+ /* margin-top: -18px !important;
+  margin-left: -0.5px !important;*/
+  color: grey !important;
+  background-color: transparent !important;
+  border-color: transparent !important;
+}
+
+.button-show-password:focus {
+  box-shadow: none;
+}
+
+::ng-deep .nb-theme-default nb-select {
+  width: 100%;
+  height: 40px;
+  border-radius: 11px;
+  background-color: #f7f7f7;
+  outline: none;
+  box-shadow: none;
+}
+
+::ng-deep .nb-theme-default nb-option.selected {
+  background-color: grey;
+}
+
+::ng-deep .nb-theme-default nb-option:hover.selected {
+  background-color: grey;
+}
+::ng-deep .nb-theme-default nb-select.appearance-outline.status-basic .select-button{
+  background-color: #f7f7f7;
+  border-color: transparent;
+ 
+}
+::ng-deep .nb-theme-default nb-select.appearance-outline.status-basic .select-button .placeholder {
+  opacity: none !important;
+}
+
+.required-field{
+  color: red;
+  font-weight: 900;
+  font-size: 19px;
+  margin-right: -1%;
+}
+section.contact-us #register-form .submit-button {
+  font-size: 15px;
+  color: #fff;
+  background-color: #a12c2f;
+  padding: 12px 30px;
+  display: inline-block;
+  border-radius: 22px;
+  font-weight: 500;
+  text-transform: uppercase;
+  transition: all .3s;
+  border: none;
+  outline: none;
+  margin: 0% 37%;
+}
+
+section.contact-us #register-form .submit-button:hover {
+  opacity: 0.9;
+}
+::ng-deep .nb-theme-default nb-select.size-medium:not(.full-width) {
+  max-width: 21rem;
+}
+:host>>> ::ng-deep .nb-theme-default .nb-form-field-limited-width.nb-form-field-size-medium {
+  max-width: 21rem;
+}
+:host> ::ng-deep .nb-form-control-container{ height: 40px;}

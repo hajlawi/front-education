@@ -4,95 +4,150 @@
       <div class="col-lg-9 align-self-center">
         <div class="row">
           <div class="col-lg-12">
-            <form id="contact" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+            <form id="register-form" [formGroup]="loginForm">
               <div class="row">
                 <div class="col-lg-12">
-                  <h2> S’inscrire</h2>
+                  <h2>Créer un compte</h2>
                 </div>
                 <div class="inscription-fields">
                   <div class="inscription-field">
-                    <div class="col-lg-6">
-                      <fieldset>
-                        <input formControlName="nom" required type="text" placeholder="Nom...*">
-                      </fieldset>
+                    <div class="col-lg-5">
+                      <span class="required-field">* </span><label>Nom :</label>
                     </div>
-                    <div class="col-lg-6">
-                      <fieldset>
-                        <input formControlName="prenom" required type="text" pInputText placeholder="Prenom...*"
-                          required="" pInputText>
-                      </fieldset>
-                    </div>
-                  </div>
-                  <div class="inscription-field">
-                    <div class="col-lg-6">
-                      <fieldset>
-                        <input formControlName="numTel" required type="number" pInputText
-                          placeholder="Numero Telphone...*" required="">
-                      </fieldset>
-                    </div>
-
-                    <div class="col-lg-6">
-                      <fieldset>
-                        <input class="form-control" formControlName="email" required type="email" pInputText
-                          placeholder="Email...*" required="">
-                      </fieldset>
+                    <div class="col-lg-8">
+                      <input formControlName="nom" type="text" nbInput id="nom"
+                        [class.input-error]="formService.checkInputInvalidity($any(loginForm.get('nom')))">
+                      <p class="error-message"
+                        *ngIf="formService.checkInputError($any(loginForm.get('nom')), 'required')">
+                        Merci de saisir votre nom</p>
                     </div>
                   </div>
                   <div class="inscription-field">
-                  <div class="col-lg-6">
+                    <div class="col-lg-5">
+                      <span class="required-field">* </span> <label>Prenom :</label>
+                    </div>
+                    <div class="col-lg-8">
+                      <input formControlName="prenom" required type="text" nbInput id="prenom"
+                        [class.input-error]="formService.checkInputInvalidity($any(loginForm.get('prenom')))">
+                      <p class="error-message"
+                        *ngIf="formService.checkInputError($any(loginForm.get('prenom')), 'required')">
+                        Merci de saisir votre prénom</p>
+                    </div>
+                  </div>
+                  <div class="inscription-field">
+                    <div class="col-lg-5">
+                      <span class="required-field">* </span> <label>Numéro Téléphone :</label>
+                    </div>
+                    <div class="col-lg-8">
+                      <input formControlName="numTel" required type="number" nbInput
+                        [class.input-error]="formService.checkInputInvalidity($any(loginForm.get('numTel')))">
+                      <p class="error-message"
+                        *ngIf="formService.checkInputError($any(loginForm.get('numTel')), 'required')">
+                        Merci de saisir votre numéro de téléphone</p>
+                    </div>
+                  </div>
+                  <div class="inscription-field">
+                    <div class="col-lg-5">
+                      <span class="required-field">* </span><label>Email :</label>
+                    </div>
+                    <div class="col-lg-8">
+                      <input class="form-control" formControlName="email" type="email" nbInput
+                        [class.input-error]="formService.checkInputInvalidity($any(loginForm.get('email')))">
+                      <p class="error-message"
+                        *ngIf="formService.checkInputError($any(loginForm.get('email')), 'required')">
+                        Merci de saisir votre adresse mail</p>
+                    </div>
+                  </div>
+                  <div class="inscription-field">
+                    <div class="col-lg-5">
+                      <span class="required-field">* </span> <label>Mot de passe :</label>
+                    </div>
+                    <div class="col-lg-8">
+                      <nb-layout>
+                        <nb-layout-column>
+                          <nb-form-field>
+                            <input class="form-control" formControlName="password" autocomplete="on" nbInput
+                              [type]="getInputType()" type="password" nbInput
+                              [class.input-error]="formService.checkInputInvalidity($any(loginForm.get('password')))">
+                              <p class="error-message"
+                              *ngIf="formService.checkInputError($any(loginForm.get('password')), 'required')">
+                              Merci de saisir votre password</p>
+                              <button class="button-show-password" nbSuffix nbButton ghost (click)="toggleShowPassword()">
+                              <nb-icon [icon]="showPassword ? 'eye-off-outline' : 'eye-outline'" pack="eva"
+                                [attr.aria-label]="showPassword ? 'hide password' : 'show password'">
+                              </nb-icon>
+                            </button>
+                          
+                          </nb-form-field>
+                        </nb-layout-column>
+                      </nb-layout>
+                    </div>
+                  </div>
+                  <div class="inscription-field">
+                    <div class="col-lg-5">
+                      <span class="required-field">* </span> <label>Confirmer Mot de passe :</label>
+                    </div>
+                    <div class="col-lg-8">
+                      <nb-layout>
+                        <nb-layout-column>
+                          <nb-form-field>
+                      <input class="form-control" formControlName="cpassword"
+                        [type]="showConfirmPassword ? 'text' : 'password'" autocomplete="on" required type="password"
+                        nbInput
+                        [class.input-error]="formService.checkInputInvalidity($any(loginForm.get('cpassword')))">
+                      <button class="button-show-password" nbSuffix nbButton ghost
+                        (click)="toggleShowConfirmPassword()">
+                        <nb-icon [icon]="showConfirmPassword ? 'eye-off-outline' : 'eye-outline'" pack="eva"
+                          [attr.aria-label]="showConfirmPassword ? 'hide password' : 'show password'">
+                        </nb-icon>
+                      </button>
+                      <p class="error-message"
+                        *ngIf="formService.checkInputError($any(loginForm.get('cpassword')), 'required')">
+                        Merci de confirmer votre password </p>
+                        </nb-form-field>
+                        </nb-layout-column>
+                        </nb-layout>
+                    </div>
+                  </div>
+                  <div class="inscription-field">
+                    <div class="col-lg-5">
+                      <span class="required-field">* </span> <label>Vous êtes ? </label>
+                    </div>
+                    <div class="col-lg-8">
+                      <nb-select formControlName="profil"  [selected]="selectedOption" (selectedChange)="selectedProfilChange($event)">
+                        <nb-option value="enseignant">Enseignant</nb-option>
+                        <nb-option value="etudiant">Etudiant</nb-option>
+                      </nb-select>
+                    </div>
+                  </div>
+                  <div class="inscription-field" *ngIf="mode">
+                    <div class="col-lg-5">
+                      <span class="required-field">* </span> <label>Specialité :</label>
+                    </div>
+                    <div class="col-lg-8">
+                      <nb-select formControlName="specialite">
+                        <nb-option value="enseignant">Math</nb-option>
+                        <nb-option value="etudiant">Etudiant</nb-option>
+                      </nb-select>
+                    </div>
+                  </div>
+                  <div class="col-lg-7">
                     <fieldset>
-                      <input class="form-control" formControlName="password" autocomplete="on"
-                        [type]="hide ? 'password' : 'text'" required type="password" pInputText
-                        placeholder="Mot de passe ...*" required="">
+                      <button id="form-submit" class="submit-button" (click)="onSubmit()">S’inscrire
+                      </button>
                     </fieldset>
                   </div>
-
-
-                  <div class="col-lg-6">
-                    <fieldset>
-                      <input class="form-control" formControlName="cpassword" [type]="chide ? 'password' : 'text'"
-                        autocomplete="on" required type="password" pInputText placeholder="Confirme Mot de passe...*"
-                        required="">
-                    </fieldset>
+                  <div class="already-have-account">
+                    <div class="col-lg-12">
+                      <a routerLink="/login" routerLinkActive="active"> Vous avez déjà un compte !</a>
+                    </div>
                   </div>
-</div>
-<div class="inscription-field">
-
-                  <div class="col-lg-6">
-
-                    <fieldset>
-                      <select formControlName="profil" class="form-control" (click)="isSelected()"
-                        placeholder="Vous étes...*" >
-                        <option value="enseignant">Enseignant</option>
-                        <option value="etudiant">Etudiant</option>
-                      </select>
-                    </fieldset>
-                  </div>
-                  <div class="col-lg-6">
-                    <fieldset *ngIf="mode==true">
-                      <input class="form-control" formControlName="specialite" required type="text" pInputText
-                        placeholder="Specialite...*" required="">
-                    </fieldset>
-                  </div>
-                 <!-- <div class="col-lg-4">
-                    <fieldset *ngIf="mode==true">
-                      <input class="form-control" formControlName="biography" required type="text" pInputText
-                        placeholder="biography...*" required="">
-                    </fieldset>
-                  </div>-->
                 </div>
-                <div class="col-lg-12">
-                  <fieldset>
-                    <button type="submit" id="form-submit" class="button">SEND MESSAGE NOW</button>
-                  </fieldset>
-                </div>
-                </div>
-            
               </div>
             </form>
+        
           </div>
         </div>
       </div>
-
     </div>
   </div>

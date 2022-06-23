@@ -47,7 +47,7 @@
     background-color: #f7f7f7;
     font-size: 16px;
     font-weight: 500;
-    color: #7a7a7a;
+    color: black;
     padding: 0px 50px;
     margin-bottom: 8px;
     text-align: left; 
@@ -200,10 +200,41 @@ border-color: transparent;
 ::ng-deep .nb-theme-default nb-layout .layout .layout-container .content .columns nb-layout-column {
   padding: 0rem;
 }
-::ng-deep  .nb-theme-default .nb-form-field-limited-width.nb-form-field-size-medium {
-  max-width: 100%;
+::ng-deep .form-login-fields .nb-form-field-limited-width .nb-form-field-size-medium .nb-transition {
+  max-width:100%;
 }
+
 fieldset {
   padding: .35em 0em .625em;
 }
 .button-show-password:focus { box-shadow: none; }
+
+section.contact-us #contact-form h2 {
+  text-transform: none;
+  color: #eee;
+  border-bottom: 1px solid #f5a425;
+  margin-bottom: 40px;
+  padding-bottom: 10px;
+  font-size: 22px;
+  font-weight: 700;
+  text-align: center;
+}
+:host>>> ::ng-deep .nb-form-control-container {
+  height: unset;
+}
+ ::ng-deep .nb-theme-default .nb-form-field-limited-width.nb-form-field-size-medium {
+  max-width: 100%;
+}
+::ng-deep  .p-toast-top-right {
+  top: 32px !important;
+}
+
+::ng-deep  .p-toast .p-toast-message.p-toast-message-error {
+    background:  white;
+    border: solid #ff5757;
+    border-width: 0 0 0 6px;
+    color: #ff5757;
+}
+::ng-deep  .p-toast {
+  opacity: 1;
+}

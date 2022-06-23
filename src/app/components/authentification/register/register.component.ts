@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { FormService } from 'src/app/service/FormService.service';
 import { RegistrationService } from '../../core/service/registration.service';
 
 @Component({
@@ -15,9 +16,14 @@ export class RegisterComponent implements OnInit {
   returnUrl: string;
   hide = true;
   chide = true;
-  public mode:boolean=false;
+  mode:boolean=false;
+  showPassword = true;
+  showConfirmPassword = true;
+  selectedOption :string ;
 
-  constructor(private service: RegistrationService, private formBuilder: FormBuilder, private router: Router) {
+  constructor(private service: RegistrationService, private formBuilder: FormBuilder, private router: Router, 
+    public formService: FormService) {
+      this.selectedOption="enseignant"
   }
 
   ngOnInit() {
@@ -42,6 +48,7 @@ export class RegisterComponent implements OnInit {
     this.submitted = true;
     // stop here if form is invalid
     if (this.loginForm.invalid) {
+      this.loginForm.markAllAsTouched()
       return;
     } else {
       //this.router.navigate(['/dashboard/main']);
@@ -57,10 +64,23 @@ export class RegisterComponent implements OnInit {
     }
   }
 
-isSelected(){
- if(this.loginForm.get('profil')?.value=="enseignant") 
+  selectedProfilChange(event :any ){
+ if(event=="enseignant") 
 this.mode=true;
-else if(this.loginForm.get('profil')?.value=="etudiant") 
+else if(event=="etudiant") 
 this.mode=false;
 }
+getInputType() {
+  if (this.showPassword) {
+    return 'text';
+  }
+  return 'password';
+}
+toggleShowPassword() {
+  this.showPassword = !this.showPassword;
+}
+toggleShowConfirmPassword(){
+  this.showConfirmPassword = !this.showConfirmPassword;
+}
+
 }

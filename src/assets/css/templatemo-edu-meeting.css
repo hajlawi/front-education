@@ -864,7 +864,7 @@ services
   margin-left: 10px;
   outline: none;
   position: absolute;
-  right: -85px;
+  right: 0px;
 }
 
 .services .owl-nav .owl-next:before {

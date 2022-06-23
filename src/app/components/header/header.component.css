@@ -54,7 +54,7 @@
 .header-area .main-nav .nav li a {
   display: block;
   font-weight: 500;
-  font-size: 14px;
+  font-size: 15px;
   text-transform: unset;
   color: #f5a425;
   -webkit-transition: all 0.3s ease 0s;
@@ -94,7 +94,7 @@
 }
 .header-area .main-nav .nav li.has-sub ul.sub-menu {
   position: absolute;
-  width: 250px;
+  width: auto;
   box-shadow: 0 2px 28px 0 rgba(0, 0, 0, 0.06);
   overflow: hidden;
   top: 40px;
@@ -103,6 +103,7 @@
   transform: translateY(+2em);
   visibility: hidden;
   z-index: -1;
+  white-space: nowrap;
 }
 
 .header-area .main-nav .nav li.has-sub ul.sub-menu li {
@@ -117,6 +118,7 @@
   background: #f7f7f7;
   color: #2a2a2a!important;
   padding-left: 20px;
+  padding-right: 20px;
   height: 40px;
   line-height: 40px;
   -webkit-transition: all 0.3s ease 0s;
@@ -383,6 +385,8 @@
   .container-md,
   .container-sm,
   .container {
-    max-width: 1641px;
+    max-width: 1553px;
   }
 }
+ul{
+padding-left: 1rem;}

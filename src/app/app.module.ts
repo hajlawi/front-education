@@ -49,7 +49,7 @@ import { InformatiqueComponent } from './matiere/informatique/informatique.compo
 import { AjoutDocumentComponent } from './matiere/document/ajout-document/ajout-document.component';
 import { PasswordForgottenComponent } from './components/authentification/password-forgotten/password-forgotten.component';
 import { ResetPasswordComponent } from './components/authentification/reset-password/reset-password.component';
-import { NbThemeModule,NbIconModule,NbFormFieldModule, NbInputModule, NbCardModule, NbLayoutModule } from '@nebular/theme';
+import { NbThemeModule,NbIconModule,NbFormFieldModule, NbInputModule, NbCardModule, NbLayoutModule, NbSelectModule } from '@nebular/theme';
 import {NbEvaIconsModule} from '@nebular/eva-icons';
 import {ToastModule} from 'primeng/toast';
 import { FormService } from './service/FormService.service';
@@ -106,7 +106,7 @@ import { MessageService } from 'primeng/api';
     NbThemeModule.forRoot(),
     MDBBootstrapModule,NgbModule,FileUploadModule,ButtonModule,DialogModule,
     NbFormFieldModule,NbEvaIconsModule, NbIconModule,NbInputModule,NbCardModule, NbLayoutModule, 
-    ToastModule
+    ToastModule, NbSelectModule 
   ],
   providers: [FormService, MessageService],
   bootstrap: [AppComponent],

@@ -4,30 +4,33 @@
       <div class="col-lg-9 align-self-center">
         <div class="row">
           <div class="col-lg-9">
-            <form id="contact-form" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+            <form id="contact-form" [formGroup]="loginForm">
               <div class="row">
-                <img src="assets/images/course-04.jpg" id="logo-img">
+                <div class="col-lg-12">
+                  <h2>Se connecter</h2>
+                </div>
+                <!-- <img src="assets/images/course-04.jpg" id="logo-img"> -->
                 <div class="register-crendentials">
                   <div class="col-lg-6">
                     <nb-layout>
                       <nb-layout-column>
-                        <nb-form-field>
+                        <nb-form-field class="form-login-fields">
                           <nb-icon nbPrefix icon="person-outline" pack="eva"></nb-icon>
                           <input type="text" nbInput formControlName="email" id="email" placeholder="Email *"
-                            [class.input-error]="formService.checkInputError($any(loginForm.get('email')), 'customEmail') || formService.checkInputError($any(loginForm.get('email')), 'required')">
+                            [class.input-error]="(formService.checkInputError($any(loginForm.get('email')), 'customEmail') || formService.checkInputError($any(loginForm.get('email')), 'required')) ">
                         </nb-form-field>
                         <p class="error-message"
                           *ngIf="formService.checkInputError($any(loginForm.get('email')), 'required')">
-                          Adresse email obligatoire</p>
+                          Merci de saisir votre adresse mail</p>
                         <p class="error-message"
                           *ngIf="formService.checkInputError($any(loginForm.get('email')), 'customEmail')">
-                          Adresse email invalide</p>
+                          Adresse mail invalide</p>
 
                         <nb-form-field>
                           <nb-icon nbPrefix icon="lock-outline" pack="eva"></nb-icon>
                           <input [type]="getInputType()" nbInput formControlName="password" id="password"
                             placeholder="Password *"
-                            [class.input-error]="formService.checkInputInvalidity($any(loginForm.get('password')))">
+                            [class.input-error]="formService.checkInputInvalidity($any(loginForm.get('password'))) ">
                           <button class="button-show-password" nbSuffix nbButton ghost (click)="toggleShowPassword()">
                             <nb-icon [icon]="showPassword ? 'eye-off-outline' : 'eye-outline'" pack="eva"
                               [attr.aria-label]="showPassword ? 'hide password' : 'show password'">
@@ -36,32 +39,24 @@
                         </nb-form-field>
                         <p class="error-message"
                           *ngIf="formService.checkInputError($any(loginForm.get('password')), 'required')">
-                          Password obligatoire</p>
+                          Merci de saisir votre password</p>
                         <div class="col-lg-12">
                           <fieldset>
-                            <button type="submit" id="form-submit" class="button"
-                              [disabled]="!loginForm.valid">Connexion</button>
+                            <button id="form-submit" class="button" (click)="onSubmit()">Valider</button>
                           </fieldset>
                         </div>
                       </nb-layout-column>
                     </nb-layout>
                   </div>
-
                 </div>
-
-
                 <div class="lost-password">
-
                   <div class="col-lg-6">
                     <a routerLink="/Mdpoublie" routerLink="/passwordForotten">Mot de passe oublié ?</a>
                   </div>
                   <div class="col-lg-6">
                     <a routerLink="/register" routerLinkActive="active"> Créer un compte !</a>
                   </div>
-
-
                 </div>
-
               </div>
             </form>
           </div>
