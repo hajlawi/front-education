@@ -11,6 +11,7 @@ export const environment = {
   urlFile:'http://localhost:8099/api/file',
   urlDoc:'http://localhost:8099/api/document',
   urlMatiere:'http://localhost:8099/api/matiere',
+  urlMeeting:'http://localhost:8093/api/meetings',
 };
 
 /*

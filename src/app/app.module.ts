@@ -54,6 +54,8 @@ import {NbEvaIconsModule} from '@nebular/eva-icons';
 import {ToastModule} from 'primeng/toast';
 import { FormService } from './service/FormService.service';
 import { MessageService } from 'primeng/api';
+import { AjoutMeetingComponent } from './components/meeting/ajoutMeeting/ajout-meeting/ajout-meeting.component';
+
 
 @NgModule({
   declarations: [
@@ -81,7 +83,9 @@ import { MessageService } from 'primeng/api';
     InformatiqueComponent,
     AjoutDocumentComponent,
     PasswordForgottenComponent,
-    ResetPasswordComponent
+    ResetPasswordComponent,
+    AjoutMeetingComponent,
+
 
   ],
   imports: [

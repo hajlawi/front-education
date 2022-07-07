@@ -90,11 +90,11 @@ const routes: Routes = [
     path:'passwordForotten',
     component:PasswordForgottenComponent
   },
+
   {
-    path:'resetPassword/:token',
+    path:'reset_password/:token',
     component:ResetPasswordComponent
   },
-  
 ];
 
 @NgModule({

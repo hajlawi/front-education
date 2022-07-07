@@ -84,7 +84,7 @@ getUsersImgs(): Observable<any> {
 
   //contact the application hostun
   contactUs(data: any): Observable<any> {
-    return this.http.post(`${API_CONTACT}sendMessage`,data);
+    return this.http.post(`${API_CONTACT}sendEmail`,data);
   }
   imageUploadAction(imageFormData: FormData, id: number): Observable<any> {
     return this.http.post(`http://localhost:8093/api/imageUser/upload/image/${id}`,
@@ -96,4 +96,5 @@ getUsersImgs(): Observable<any> {
     return this.http.get(`http://localhost:8093/api/imageUser/get/image/info/${id}`);
 
   }
+
 }
